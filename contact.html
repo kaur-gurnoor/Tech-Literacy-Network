@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Tech Literacy Network</title>
+<link rel="stylesheet" href="/style.css">
+<!-- Google Analytics: replace G-XXXXXXXXXX with your real Measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+<script>
+  async function handleFormSubmit(e) {
+    e.preventDefault();
+    const form = document.getElementById('contact-form');
+    const btn = form.querySelector('.form-submit');
+    const originalHTML = btn.innerHTML;
+    btn.innerHTML = 'Sending...';
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+    try {
+      const response = await fetch('https://formspree.io/f/xvzjzdew', {
+        method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        form.style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+      } else {
+        btn.innerHTML = originalHTML; btn.disabled = false; btn.style.opacity = '1';
+        alert('Something went wrong. Please email us directly at techliteracynetwork@gmail.com');
+      }
+    } catch(err) {
+      btn.innerHTML = originalHTML; btn.disabled = false; btn.style.opacity = '1';
+      alert('Something went wrong. Please email us directly at techliteracynetwork@gmail.com');
+    }
+  }
+</script>
+</head>
+<body>
+<nav id="main-nav">
+  <a class="nav-brand" href="/">
+    <svg width="36" height="36" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="200" height="200" rx="44" fill="#00C2A8" fill-opacity="0.15"/>
+      <path d="M20 40 L100 58 L100 168 L20 150 Z" stroke="#00C2A8" stroke-width="5" fill="none" stroke-linejoin="round"/>
+      <path d="M180 40 L100 58 L100 168 L180 150 Z" stroke="#00C2A8" stroke-width="5" fill="none" stroke-linejoin="round"/>
+      <line x1="100" y1="58" x2="100" y2="168" stroke="#00C2A8" stroke-width="7" stroke-linecap="round" opacity="0.4"/>
+      <circle cx="136" cy="96" r="9" fill="#00C2A8"/>
+      <line x1="136" y1="87" x2="136" y2="78" stroke="#00C2A8" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="145" y1="96" x2="154" y2="96" stroke="#00C2A8" stroke-width="3.5" stroke-linecap="round"/>
+      <circle cx="136" cy="76" r="6" stroke="#00C2A8" stroke-width="3.5" fill="none"/>
+      <circle cx="156" cy="96" r="6" stroke="#00C2A8" stroke-width="3.5" fill="none"/>
+      <circle cx="116" cy="130" r="6.5" fill="#00C2A8" opacity="0.65"/>
+      <line x1="116" y1="123.5" x2="116" y2="116" stroke="#00C2A8" stroke-width="2.8" stroke-linecap="round" opacity="0.65"/>
+      <line x1="122.5" y1="130" x2="130" y2="130" stroke="#00C2A8" stroke-width="2.8" stroke-linecap="round" opacity="0.65"/>
+      <circle cx="116" cy="114" r="4.5" stroke="#00C2A8" stroke-width="2.8" fill="none" opacity="0.65"/>
+      <circle cx="132" cy="130" r="4.5" stroke="#00C2A8" stroke-width="2.8" fill="none" opacity="0.65"/>
+    </svg>
+    <div class="nav-brand-text">Tech Literacy Network<span>Brampton, Ontario</span></div>
+  </a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/programs">Programs</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/blog">Blog</a></li>
+    <li><a href="/gallery">Gallery</a></li>
+    <li><a href="/contact" class="nav-cta">Request a Workshop</a></li>
+  </ul>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+  <div class="prog-page-hero">
+    <div class="hero-grid-bg"></div>
+    <div class="prog-page-inner">
+      <div class="page-hero-tag">Contact</div>
+      <h1 class="page-hero-title">Request a free workshop.</h1>
+      <p class="page-hero-sub">Fill out the form and we'll get back to you within 48 hours to discuss dates, location, and the right program for your group.</p>
+    </div>
+  </div>
+  <section>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2>Let's bring digital confidence to your community</h2>
+        <p>We serve senior centers, libraries, schools, community centers, and any group that wants to learn. All workshops are free, and we bring everything — all you need is a room and your people.</p>
+        <div class="contact-detail">
+          <div class="contact-detail-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#007A6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><div class="contact-detail-label">Email</div><div class="contact-detail-value">techliteracynetwork@gmail.com</div></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#007A6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><div class="contact-detail-label">Phone</div><div class="contact-detail-value">(647) 852-3544</div></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#007A6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="contact-detail-label">Based in</div><div class="contact-detail-value">Brampton, Ontario — serving Peel Region &amp; GTA</div></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#007A6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+          <div><div class="contact-detail-label">Instagram</div><div class="contact-detail-value">@techliteracynetwork</div></div>
+        </div>
+        <div style="margin-top:28px;padding:20px;background:var(--aqua);border-radius:14px;border:1px solid rgba(0,194,168,0.2)">
+          <div style="font-size:13px;font-weight:700;color:var(--teal-dim);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:8px">We'll respond within</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;color:var(--navy)">48 hours</div>
+          <div style="font-size:13px;color:var(--text-secondary);margin-top:4px">Mon – Fri, 9am – 6pm EST</div>
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <div class="form-title">Workshop request form</div>
+        <div class="form-sub">Tell us about your group and we'll take it from there.</div>
+        <form id="contact-form" onsubmit="handleFormSubmit(event)">
+          <div class="form-row">
+            <div class="form-group"><label for="fname">First name *</label><input type="text" id="fname" name="fname" placeholder="Your first name" required></div>
+            <div class="form-group"><label for="lname">Last name *</label><input type="text" id="lname" name="lname" placeholder="Your last name" required></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label for="email">Email address *</label><input type="email" id="email" name="email" placeholder="you@example.com" required></div>
+            <div class="form-group"><label for="phone">Phone number</label><input type="tel" id="phone" name="phone" placeholder="(647) 000-0000"></div>
+          </div>
+          <div class="form-group"><label for="org">Organization / venue name *</label><input type="text" id="org" name="org" placeholder="e.g. Brampton Public Library, John Fraser Secondary School" required></div>
+          <div class="form-row">
+            <div class="form-group"><label for="program">Program of interest *</label>
+              <select id="program" name="program" required>
+                <option value="" disabled selected>Select a program</option>
+                <option>AI Basics for Everyday Life</option>
+                <option>Cyber Safety 101</option>
+                <option>Online Kindness Challenge</option>
+                <option>Not sure — help me decide</option>
+              </select>
+            </div>
+            <div class="form-group"><label for="groupsize">Estimated group size</label>
+              <select id="groupsize" name="groupsize">
+                <option value="" disabled selected>Select range</option>
+                <option>1–10 people</option>
+                <option>11–25 people</option>
+                <option>26–50 people</option>
+                <option>50+ people</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group"><label for="audience">Who is your audience? *</label>
+            <select id="audience" name="audience" required>
+              <option value="" disabled selected>Select audience</option>
+              <option>Seniors (60+)</option>
+              <option>Youth / students</option>
+              <option>Mixed ages</option>
+              <option>Adults (general community)</option>
+            </select>
+          </div>
+          <div class="form-group"><label for="message">Anything else we should know?</label><textarea id="message" name="message" placeholder="Preferred dates, location details, accessibility needs, or any questions..."></textarea></div>
+          <button type="submit" class="form-submit">Send request <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></button>
+          <p class="form-note">We'll never share your details. This form sends directly to Gurnoor.</p>
+        </form>
+        <div class="form-success" id="form-success">
+          <div class="form-success-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <h3>Request received!</h3>
+          <p>Thank you for reaching out. Gurnoor will be in touch within 48 hours to discuss your workshop.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="nav-brand" href="/" style="margin-bottom:0">
+          <svg width="36" height="36" viewBox="0 0 200 200" fill="none">
+            <rect width="200" height="200" rx="44" fill="#00C2A8" fill-opacity="0.15"/>
+            <path d="M20 40 L100 58 L100 168 L20 150 Z" stroke="#00C2A8" stroke-width="5" fill="none" stroke-linejoin="round"/>
+            <path d="M180 40 L100 58 L100 168 L180 150 Z" stroke="#00C2A8" stroke-width="5" fill="none" stroke-linejoin="round"/>
+            <line x1="100" y1="58" x2="100" y2="168" stroke="#00C2A8" stroke-width="7" stroke-linecap="round" opacity="0.4"/>
+            <circle cx="136" cy="96" r="9" fill="#00C2A8"/>
+            <line x1="136" y1="87" x2="136" y2="78" stroke="#00C2A8" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="145" y1="96" x2="154" y2="96" stroke="#00C2A8" stroke-width="3.5" stroke-linecap="round"/>
+            <circle cx="136" cy="76" r="6" stroke="#00C2A8" stroke-width="3.5" fill="none"/>
+            <circle cx="156" cy="96" r="6" stroke="#00C2A8" stroke-width="3.5" fill="none"/>
+            <circle cx="116" cy="130" r="6.5" fill="#00C2A8" opacity="0.65"/>
+            <line x1="116" y1="123.5" x2="116" y2="116" stroke="#00C2A8" stroke-width="2.8" stroke-linecap="round" opacity="0.65"/>
+            <line x1="122.5" y1="130" x2="130" y2="130" stroke="#00C2A8" stroke-width="2.8" stroke-linecap="round" opacity="0.65"/>
+            <circle cx="116" cy="114" r="4.5" stroke="#00C2A8" stroke-width="2.8" fill="none" opacity="0.65"/>
+            <circle cx="132" cy="130" r="4.5" stroke="#00C2A8" stroke-width="2.8" fill="none" opacity="0.65"/>
+          </svg>
+          <div class="nav-brand-text" style="color:white">Tech Literacy Network<span>Brampton, Ontario</span></div>
+        </a>
+        <p>Free AI and cyber safety workshops for seniors and youth. Empowering digital citizens, one session at a time.</p>
+        <div class="footer-social">
+          <a class="social-btn" href="https://instagram.com/techliteracynetwork" target="_blank" aria-label="Instagram">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/programs">Programs</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/gallery">Gallery</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Programs</h4>
+        <ul>
+          <li><a href="/programs">AI Basics for Everyday Life</a></li>
+          <li><a href="/programs">Cyber Safety 101</a></li>
+          <li><a href="/programs">Online Kindness Challenge</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:techliteracynetwork@gmail.com">techliteracynetwork@gmail.com</a></li>
+          <li><a href="tel:6478523544">(647) 852-3544</a></li>
+          <li><a href="/contact">Request a workshop</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Tech Literacy Network. All rights reserved. Brampton, Ontario, Canada.</p>
+      <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+        <div class="footer-badge">Currently accepting workshop requests</div>
+        <a href="/privacy" style="font-size:12px;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='#00C2A8'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+  document.getElementById('nav-toggle').addEventListener('click', function() {
+    document.getElementById('nav-links').classList.toggle('open');
+  });
+</script>
+</body>
+</html>
