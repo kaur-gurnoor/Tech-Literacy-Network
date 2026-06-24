@@ -2374,10 +2374,10 @@
     </div>
     <div class="footer-bottom">
       <p>© 2025 Tech Literacy Network. All rights reserved. Brampton, Ontario, Canada.</p>
-      <div class="footer-badge">Currently accepting workshop requests</div>
-    </div>
-  </div>
-</footer>
+      <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+        <div class="footer-badge">Currently accepting workshop requests</div>
+        <a onclick="showPage('privacy')" style="font-size:12px;color:rgba(255,255,255,0.3);cursor:pointer;text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='#00C2A8'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">Privacy Policy</a>
+      </div>
     </div>
   </div>
 </footer>
@@ -2431,6 +2431,82 @@
       alert('Something went wrong. Please email us directly at techliteracynetwork@gmail.com');
     }
   }
+
+
+<!-- =====================================================
+     GOOGLE ANALYTICS
+     Replace G-XXXXXXXXXX with your Measurement ID
+     e.g. G-AB12CD34EF
+     ===================================================== -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
+<!-- PRIVACY POLICY PAGE -->
+<div class="page" id="page-privacy">
+  <div class="prog-page-hero">
+    <div class="hero-grid-bg"></div>
+    <div class="prog-page-inner">
+      <div class="page-hero-tag">Privacy Policy</div>
+      <h1 class="page-hero-title">How we handle your data.</h1>
+      <p class="page-hero-sub">Last updated: June 2025</p>
+    </div>
+  </div>
+  <section>
+    <div class="section-inner" style="max-width:720px">
+
+      <div style="margin-bottom:40px">
+        <h2 style="font-size:20px;font-weight:700;color:#0D2B45;margin-bottom:12px;letter-spacing:-0.01em">Overview</h2>
+        <p style="font-size:15px;color:#4A6880;line-height:1.8">Tech Literacy Network ("we", "us", or "our") is committed to protecting your privacy. This policy explains what information we collect when you visit our website and how we use it. We will never sell your personal data.</p>
+      </div>
+
+      <div style="margin-bottom:40px">
+        <h2 style="font-size:20px;font-weight:700;color:#0D2B45;margin-bottom:12px;letter-spacing:-0.01em">Information we collect</h2>
+        <p style="font-size:15px;color:#4A6880;line-height:1.8;margin-bottom:14px">We collect two types of information:</p>
+        <div style="background:#F7F9FC;border-radius:12px;padding:20px 24px;border:1px solid rgba(13,43,69,0.08);margin-bottom:14px">
+          <p style="font-size:14px;font-weight:600;color:#0D2B45;margin-bottom:6px">Information you give us directly</p>
+          <p style="font-size:14px;color:#4A6880;line-height:1.7">When you fill out our workshop request form, we collect your name, email address, phone number, organization name, and the details of your request. This information is used solely to respond to your workshop inquiry and is never shared with third parties.</p>
+        </div>
+        <div style="background:#F7F9FC;border-radius:12px;padding:20px 24px;border:1px solid rgba(13,43,69,0.08)">
+          <p style="font-size:14px;font-weight:600;color:#0D2B45;margin-bottom:6px">Anonymous analytics data</p>
+          <p style="font-size:14px;color:#4A6880;line-height:1.7">We use Google Analytics to understand how visitors use our website. Google Analytics collects anonymous information such as which pages you visit, how long you spend on the site, and what device or browser you use. This data does not identify you personally. You can opt out of Google Analytics tracking by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" style="color:#00C2A8;text-decoration:none">Google Analytics opt-out browser add-on</a>.</p>
+        </div>
+      </div>
+
+      <div style="margin-bottom:40px">
+        <h2 style="font-size:20px;font-weight:700;color:#0D2B45;margin-bottom:12px;letter-spacing:-0.01em">Cookies</h2>
+        <p style="font-size:15px;color:#4A6880;line-height:1.8">Our website uses cookies placed by Google Analytics to collect anonymous usage data. These cookies do not store any personally identifiable information. By continuing to use our site, you consent to the use of these cookies. You can disable cookies in your browser settings at any time.</p>
+      </div>
+
+      <div style="margin-bottom:40px">
+        <h2 style="font-size:20px;font-weight:700;color:#0D2B45;margin-bottom:12px;letter-spacing:-0.01em">How we use your information</h2>
+        <p style="font-size:15px;color:#4A6880;line-height:1.8">Information submitted through our contact form is used only to respond to your workshop request. Anonymous analytics data is used to understand how our website is being used so we can improve it. We do not use your data for advertising and we do not sell or share your data with any third parties, except as required by law.</p>
+      </div>
+
+      <div style="margin-bottom:40px">
+        <h2 style="font-size:20px;font-weight:700;color:#0D2B45;margin-bottom:12px;letter-spacing:-0.01em">Third-party services</h2>
+        <p style="font-size:15px;color:#4A6880;line-height:1.8;margin-bottom:10px">We use the following third-party services to operate our website:</p>
+        <p style="font-size:14px;color:#4A6880;line-height:1.8"><strong style="color:#0D2B45">Google Analytics</strong> — anonymous website traffic analysis. <a href="https://policies.google.com/privacy" target="_blank" style="color:#00C2A8;text-decoration:none">Google Privacy Policy</a> · <a href="https://www.google.com/policies/privacy/partners/" target="_blank" style="color:#00C2A8;text-decoration:none">How Google uses data from sites that use their services</a></p>
+        <p style="font-size:14px;color:#4A6880;line-height:1.8;margin-top:8px"><strong style="color:#0D2B45">Formspree</strong> — secure form submission handling. Your workshop request form data is processed by Formspree and delivered to our email. <a href="https://formspree.io/legal/privacy-policy/" target="_blank" style="color:#00C2A8;text-decoration:none">Formspree Privacy Policy</a></p>
+      </div>
+
+      <div style="margin-bottom:40px">
+        <h2 style="font-size:20px;font-weight:700;color:#0D2B45;margin-bottom:12px;letter-spacing:-0.01em">Your rights</h2>
+        <p style="font-size:15px;color:#4A6880;line-height:1.8">You have the right to request access to, correction of, or deletion of any personal information we hold about you. To make a request, email us at <a href="mailto:techliteracynetwork@gmail.com" style="color:#00C2A8;text-decoration:none">techliteracynetwork@gmail.com</a>.</p>
+      </div>
+
+      <div style="background:#E0FAF7;border-radius:12px;padding:20px 24px;border:1px solid rgba(0,194,168,0.2)">
+        <p style="font-size:14px;color:#007A6B;line-height:1.7"><strong>Questions?</strong> If you have any questions about this privacy policy or how we handle your data, contact us at <a href="mailto:techliteracynetwork@gmail.com" style="color:#007A6B;font-weight:600">techliteracynetwork@gmail.com</a>.</p>
+      </div>
+
+    </div>
+  </section>
+</div>
+
 </script>
 </body>
 </html>
