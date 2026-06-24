@@ -1,0 +1,2412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech Literacy Network</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D2B45;
+    --teal: #00C2A8;
+    --teal-dark: #009688;
+    --teal-dim: #007A6B;
+    --aqua: #E0FAF7;
+    --cool-white: #F7F9FC;
+    --white: #FFFFFF;
+    --text-primary: #0D2B45;
+    --text-secondary: #4A6880;
+    --text-light: #7B9EB8;
+    --border: rgba(13,43,69,0.10);
+    --border-strong: rgba(13,43,69,0.18);
+    --nav-h: 68px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
+    background: var(--white);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.2;
+  }
+
+  /* ── LOGO SVG ── */
+  .logo-svg { display: block; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--nav-h);
+    background: rgba(13,43,69,0.97);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,194,168,0.15);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    gap: 2rem;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .nav-brand-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+  }
+
+  .nav-brand-text span {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--teal);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    list-style: none;
+    margin-left: auto;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 8px 16px;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: color 0.2s;
+    border-radius: 6px;
+  }
+
+  .nav-links a:hover { color: var(--teal); }
+  .nav-links a.active { color: var(--teal); }
+
+  .nav-cta {
+    margin-left: 8px;
+    padding: 8px 20px !important;
+    background: var(--teal) !important;
+    color: var(--navy) !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    transition: background 0.2s, transform 0.15s !important;
+  }
+
+  .nav-cta:hover {
+    background: #00d9bc !important;
+    transform: translateY(-1px);
+    color: var(--navy) !important;
+  }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    margin-left: auto;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: white;
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+
+  /* ── SECTIONS ── */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  section { padding: 96px 5%; }
+  .section-inner { max-width: 1080px; margin: 0 auto; }
+
+  /* ── HERO ── */
+  .hero {
+    padding-top: calc(var(--nav-h) + 80px);
+    padding-bottom: 100px;
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,194,168,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,194,168,0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,194,168,0.12) 0%, transparent 70%);
+    top: -100px;
+    right: -100px;
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,194,168,0.12);
+    border: 1px solid rgba(0,194,168,0.25);
+    color: var(--teal);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--teal);
+    animation: pulse-dot 2s infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.7); }
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--teal);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 500px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--teal);
+    color: var(--navy);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 14px 28px;
+    border-radius: 10px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.01em;
+  }
+
+  .btn-primary:hover { background: #00d9bc; transform: translateY(-2px); }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 13px 24px;
+    border-radius: 10px;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
+
+  /* Hero card */
+  .hero-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(0,194,168,0.2);
+    border-radius: 20px;
+    padding: 32px;
+    backdrop-filter: blur(8px);
+  }
+
+  .hero-card-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 20px;
+  }
+
+  .hero-stat-row {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .hero-stat {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 16px;
+    background: rgba(0,194,168,0.06);
+    border: 1px solid rgba(0,194,168,0.12);
+    border-radius: 12px;
+  }
+
+  .hero-stat-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(0,194,168,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .hero-stat-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 2px;
+  }
+
+  .hero-stat-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  /* ── TRUST BAR ── */
+  .trust-bar {
+    background: var(--aqua);
+    padding: 28px 5%;
+    border-top: 1px solid rgba(0,194,168,0.2);
+    border-bottom: 1px solid rgba(0,194,168,0.2);
+  }
+
+  .trust-bar-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--teal-dim);
+    font-weight: 500;
+  }
+
+  .trust-icon {
+    width: 32px;
+    height: 32px;
+    background: rgba(0,194,168,0.15);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+  }
+
+  /* ── SECTION LABELS ── */
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal-dim);
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+
+  .section-sub {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    max-width: 560px;
+  }
+
+  .section-header { margin-bottom: 56px; }
+  .section-header.center { text-align: center; }
+  .section-header.center .section-sub { margin: 0 auto; }
+
+  /* ── PROGRAMS (HOME PREVIEW) ── */
+  .programs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .program-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: pointer;
+  }
+
+  .program-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--teal);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .program-card:hover { border-color: rgba(0,194,168,0.4); transform: translateY(-4px); }
+  .program-card:hover::before { transform: scaleX(1); }
+
+  .prog-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: var(--aqua);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .prog-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+
+  .prog-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin-bottom: 20px;
+  }
+
+  .prog-link {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--teal-dim);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: gap 0.2s, color 0.2s;
+  }
+
+  .prog-link:hover { color: var(--teal); gap: 8px; }
+
+  /* ── HOW IT WORKS ── */
+  .how-bg { background: var(--cool-white); }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    position: relative;
+  }
+
+  .steps-grid::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: calc(16.67% + 16px);
+    right: calc(16.67% + 16px);
+    height: 1px;
+    background: linear-gradient(90deg, var(--teal), rgba(0,194,168,0.2), var(--teal));
+  }
+
+  .step {
+    text-align: center;
+    padding: 28px 20px;
+  }
+
+  .step-num {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--navy);
+    border: 2px solid var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--teal);
+    margin: 0 auto 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .step p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* ── IMPACT (coming soon) ── */
+  .impact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .impact-card {
+    background: var(--navy);
+    border-radius: 16px;
+    padding: 36px 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .impact-card::after {
+    content: '';
+    position: absolute;
+    bottom: -20px; right: -20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(0,194,168,0.08);
+  }
+
+  .impact-soon {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--teal);
+    margin-bottom: 6px;
+  }
+
+  .impact-label {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 10px;
+  }
+
+  .impact-badge {
+    display: inline-block;
+    background: rgba(0,194,168,0.12);
+    border: 1px solid rgba(0,194,168,0.2);
+    color: var(--teal);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 3px 10px;
+    border-radius: 100px;
+    text-transform: uppercase;
+  }
+
+  /* ── PROGRAMS PAGE ── */
+  .prog-page-hero {
+    background: var(--navy);
+    padding: calc(var(--nav-h) + 64px) 5% 72px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .prog-page-hero .hero-grid-bg { position: absolute; inset: 0; }
+
+  .prog-page-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .page-hero-tag {
+    display: inline-block;
+    background: rgba(0,194,168,0.12);
+    border: 1px solid rgba(0,194,168,0.25);
+    color: var(--teal);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+  }
+
+  .page-hero-title {
+    font-size: clamp(28px, 3.5vw, 46px);
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+
+  .page-hero-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.55);
+    max-width: 540px;
+    line-height: 1.7;
+  }
+
+  .prog-section {
+    padding: 80px 5%;
+  }
+
+  .prog-section:nth-child(even) { background: var(--cool-white); }
+
+  .prog-full {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+
+  .prog-full.flip { direction: rtl; }
+  .prog-full.flip > * { direction: ltr; }
+
+  .prog-full-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+    background: var(--aqua);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(0,194,168,0.25);
+  }
+
+  .prog-full h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+
+  .prog-full-sub {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--teal-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+  }
+
+  .prog-full p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 20px;
+  }
+
+  .prog-topics {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .prog-topics li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+
+  .prog-topics li::before {
+    content: '';
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--aqua);
+    border: 1.5px solid var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4L3.5 6.5L9 1' stroke='%2300C2A8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .prog-visual {
+    background: var(--navy);
+    border-radius: 24px;
+    padding: 48px 36px;
+    border: 1px solid rgba(0,194,168,0.15);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .prog-visual .hero-grid-bg { position: absolute; inset: 0; border-radius: 24px; }
+
+  .prog-visual-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .prog-visual-item {
+    background: rgba(0,194,168,0.08);
+    border: 1px solid rgba(0,194,168,0.15);
+    border-radius: 12px;
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .prog-visual-item-icon {
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(0,194,168,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .prog-visual-item-text {
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.4;
+  }
+
+  .prog-visual-item-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 2px;
+  }
+
+  .btn-teal-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--teal-dim);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 13px 24px;
+    border-radius: 10px;
+    text-decoration: none;
+    border: 1.5px solid var(--teal);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .btn-teal-outline:hover { background: var(--teal); color: var(--navy); }
+
+  /* ── ABOUT PAGE ── */
+  .about-split {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .about-photo-wrap {
+    position: sticky;
+    top: calc(var(--nav-h) + 32px);
+  }
+
+  .about-photo-box {
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--navy);
+    border: 1px solid rgba(0,194,168,0.2);
+    aspect-ratio: 4/5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .about-photo-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    color: rgba(255,255,255,0.3);
+    font-size: 13px;
+    text-align: center;
+    padding: 24px;
+  }
+
+  .about-photo-placeholder-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(0,194,168,0.12);
+    border: 2px dashed rgba(0,194,168,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+  }
+
+  .about-photo-caption {
+    margin-top: 14px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  .about-photo-caption strong {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+
+  .about-content h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+
+  .about-content .section-label { margin-bottom: 10px; }
+
+  .about-lead {
+    font-size: 18px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 28px;
+    font-weight: 400;
+  }
+
+  .about-body {
+    font-size: 15.5px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+
+  .about-body p { margin-bottom: 18px; }
+
+  .about-quote {
+    border-left: 3px solid var(--teal);
+    padding: 16px 24px;
+    margin: 28px 0;
+    background: var(--aqua);
+    border-radius: 0 12px 12px 0;
+  }
+
+  .about-quote p {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--navy);
+    line-height: 1.5;
+    margin: 0;
+    font-style: italic;
+  }
+
+  .about-values {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 36px;
+  }
+
+  .value-card {
+    background: var(--cool-white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+
+  .value-card-icon { font-size: 22px; margin-bottom: 8px; }
+
+  .value-card h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .value-card p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  /* ── BLOG ── */
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .blog-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: pointer;
+  }
+
+  .blog-card:hover { border-color: rgba(0,194,168,0.4); transform: translateY(-4px); }
+
+  .blog-thumb {
+    height: 160px;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .blog-thumb .hero-grid-bg { border-radius: 0; }
+
+  .blog-thumb-icon {
+    position: relative;
+    z-index: 1;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(0,194,168,0.15);
+    border: 1.5px solid rgba(0,194,168,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+  }
+
+  .blog-body { padding: 24px 22px; }
+
+  .blog-tag {
+    display: inline-block;
+    background: var(--aqua);
+    color: var(--teal-dim);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: 12px;
+  }
+
+  .blog-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .blog-excerpt {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .blog-meta {
+    font-size: 12px;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .blog-meta-dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--text-light);
+  }
+
+  /* ── GALLERY ── */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .gallery-item {
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--navy);
+    border: 1px solid rgba(0,194,168,0.12);
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+
+  .gallery-item:first-child {
+    grid-column: span 2;
+    grid-row: span 2;
+    aspect-ratio: auto;
+  }
+
+  .gallery-item:hover { border-color: rgba(0,194,168,0.4); }
+
+  .gallery-item .hero-grid-bg { border-radius: 14px; }
+
+  .gallery-placeholder {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: rgba(255,255,255,0.25);
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .gallery-placeholder-icon {
+    font-size: 28px;
+    opacity: 0.4;
+  }
+
+  .gallery-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 12px 14px;
+    background: linear-gradient(transparent, rgba(13,43,69,0.85));
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 500;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .gallery-item:hover .gallery-caption { opacity: 1; }
+
+  /* ── CONTACT ── */
+  .contact-grid {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 72px;
+    align-items: start;
+  }
+
+  .contact-info h2 {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 14px;
+    letter-spacing: -0.02em;
+  }
+
+  .contact-info p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  .contact-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 18px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .contact-detail:last-of-type { border-bottom: 1px solid var(--border); }
+
+  .contact-detail-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--aqua);
+    border: 1px solid rgba(0,194,168,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .contact-detail-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-light);
+    margin-bottom: 3px;
+  }
+
+  .contact-detail-value {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--navy);
+  }
+
+  .contact-form-wrap {
+    background: var(--cool-white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px 36px;
+  }
+
+  .form-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .form-sub {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    margin-bottom: 28px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .form-group.full { grid-column: span 2; }
+
+  .form-group label {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--navy);
+    letter-spacing: 0.02em;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid var(--border-strong);
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--navy);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(0,194,168,0.12);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 110px; }
+
+  .form-submit {
+    width: 100%;
+    padding: 14px;
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .form-submit:hover { background: var(--teal); color: var(--navy); transform: translateY(-1px); }
+
+  .form-note {
+    font-size: 12px;
+    color: var(--text-light);
+    text-align: center;
+    margin-top: 12px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    padding: 56px 5% 32px;
+    border-top: 1px solid rgba(0,194,168,0.15);
+  }
+
+  .footer-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+
+  .footer-brand p {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.7;
+    margin: 14px 0 20px;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 10px;
+  }
+
+  .social-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+    cursor: pointer;
+  }
+
+  .social-btn:hover { background: rgba(0,194,168,0.15); border-color: rgba(0,194,168,0.3); }
+
+  .footer-col h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .footer-col ul { list-style: none; }
+
+  .footer-col ul li {
+    margin-bottom: 10px;
+  }
+
+  .footer-col ul li a {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+
+  .footer-col ul li a:hover { color: var(--teal); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-bottom p {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .footer-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .footer-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--teal);
+    animation: pulse-dot 2s infinite;
+  }
+
+  /* ── SUCCESS MESSAGE ── */
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 48px 24px;
+  }
+
+  .form-success-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--aqua);
+    border: 2px solid var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin: 0 auto 16px;
+  }
+
+  .form-success h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .form-success p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-card { display: none; }
+    .programs-grid { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: 1fr; }
+    .steps-grid::before { display: none; }
+    .impact-grid { grid-template-columns: 1fr; }
+    .prog-full { grid-template-columns: 1fr; gap: 40px; }
+    .prog-full.flip { direction: ltr; }
+    .about-split { grid-template-columns: 1fr; }
+    .about-photo-wrap { position: static; }
+    .about-photo-box { aspect-ratio: 3/2; max-width: 320px; }
+    .blog-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-item:first-child { grid-column: span 2; grid-row: span 1; aspect-ratio: 16/9; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .form-row { grid-template-columns: 1fr; }
+    .form-group.full { grid-column: span 1; }
+    .nav-links { display: none; flex-direction: column; position: absolute; top: var(--nav-h); left: 0; right: 0; background: rgba(13,43,69,0.98); padding: 16px; gap: 4px; }
+    .nav-links.open { display: flex; }
+    .nav-toggle { display: flex; }
+    .trust-bar-inner { gap: 24px; }
+    .about-values { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 580px) {
+    section { padding: 64px 5%; }
+    .footer-top { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-item:first-child { grid-column: span 1; aspect-ratio: 4/3; }
+  }
+</style>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a class="nav-brand" href="#" onclick="showPage('home')">
+    <svg class="logo-svg" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Tech Literacy Network logo">
+      <rect width="36" height="36" rx="9" fill="#00C2A8" fill-opacity="0.15"/>
+      <circle cx="18" cy="18" r="13" stroke="#00C2A8" stroke-width="1.2" stroke-dasharray="3 2"/>
+      <circle cx="18" cy="18" r="3.5" fill="#00C2A8"/>
+      <circle cx="18" cy="7"  r="2" fill="#0D2B45" stroke="#00C2A8" stroke-width="1.2"/>
+      <circle cx="28" cy="13" r="2" fill="#0D2B45" stroke="#00C2A8" stroke-width="1.2"/>
+      <circle cx="28" cy="23" r="2" fill="#0D2B45" stroke="#00C2A8" stroke-width="1.2"/>
+      <circle cx="18" cy="29" r="2" fill="#0D2B45" stroke="#00C2A8" stroke-width="1.2"/>
+      <circle cx="8"  cy="23" r="2" fill="#0D2B45" stroke="#00C2A8" stroke-width="1.2"/>
+      <circle cx="8"  cy="13" r="2" fill="#0D2B45" stroke="#00C2A8" stroke-width="1.2"/>
+      <line x1="18" y1="18" x2="18" y2="9"  stroke="#00C2A8" stroke-width="1" opacity="0.6"/>
+      <line x1="18" y1="18" x2="27" y2="13.5" stroke="#00C2A8" stroke-width="1" opacity="0.6"/>
+      <line x1="18" y1="18" x2="27" y2="22.5" stroke="#00C2A8" stroke-width="1" opacity="0.6"/>
+      <line x1="18" y1="18" x2="18" y2="27" stroke="#00C2A8" stroke-width="1" opacity="0.6"/>
+      <line x1="18" y1="18" x2="9"  y2="22.5" stroke="#00C2A8" stroke-width="1" opacity="0.6"/>
+      <line x1="18" y1="18" x2="9"  y2="13.5" stroke="#00C2A8" stroke-width="1" opacity="0.6"/>
+    </svg>
+    <div class="nav-brand-text">
+      Tech Literacy Network
+      <span>Brampton, Ontario</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#" onclick="showPage('home')" class="active" id="nav-home">Home</a></li>
+    <li><a href="#" onclick="showPage('programs')" id="nav-programs">Programs</a></li>
+    <li><a href="#" onclick="showPage('about')" id="nav-about">About</a></li>
+    <li><a href="#" onclick="showPage('blog')" id="nav-blog">Blog</a></li>
+    <li><a href="#" onclick="showPage('gallery')" id="nav-gallery">Gallery</a></li>
+    <li><a href="#" onclick="showPage('contact')" class="nav-cta" id="nav-contact">Request a Workshop</a></li>
+  </ul>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+
+<!-- ══════════════════════════ HOME PAGE -->
+<div class="page active" id="page-home">
+
+  <section class="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-inner">
+      <div>
+        <div class="hero-tag">Free community workshops · Brampton, ON</div>
+        <h1>Helping seniors and youth navigate the <em>digital world</em>, confidently.</h1>
+        <p class="hero-sub">Tech Literacy Network runs free, jargon-free workshops on AI tools and cyber safety — designed for real people, at their own pace.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn-primary" onclick="showPage('contact')">Request a workshop
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+          </a>
+          <a href="#" class="btn-ghost" onclick="showPage('programs')">See our programs</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-title">What we teach</div>
+        <div class="hero-stat-row">
+          <div class="hero-stat">
+            <div class="hero-stat-icon">
+              <!-- CPU/AI icon -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+            </div>
+            <div>
+              <div class="hero-stat-label">Program 01</div>
+              <div class="hero-stat-value">AI Basics for Everyday Life</div>
+            </div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-icon">
+              <!-- Shield icon -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <div class="hero-stat-label">Program 02</div>
+              <div class="hero-stat-value">Cyber Safety 101</div>
+            </div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-icon">
+              <!-- Heart/community icon -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div>
+              <div class="hero-stat-label">Program 03</div>
+              <div class="hero-stat-value">Online Kindness Challenge</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust bar -->
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#007A6B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        100% free — always
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#007A6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        No tech experience needed
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#007A6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        In-person &amp; virtual options
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#007A6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        Open to all ages
+      </div>
+    </div>
+  </div>
+
+  <!-- Programs preview -->
+  <section>
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-label">What we offer</div>
+        <h2 class="section-title">Three programs, one mission</h2>
+        <p class="section-sub">Each workshop is hands-on, paced for comfort, and completely free. No jargon. No pressure. Just learning.</p>
+      </div>
+      <div class="programs-grid">
+        <div class="program-card" onclick="showPage('programs')">
+          <div class="prog-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#007A6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+          </div>
+          <div class="prog-title">AI Basics for Everyday Life</div>
+          <p class="prog-desc">Discover what AI actually is, bust the myths, and learn to use tools like ChatGPT confidently and safely — for planning, writing, and daily tasks.</p>
+          <a class="prog-link" href="#" onclick="showPage('programs')">Learn more →</a>
+        </div>
+        <div class="program-card" onclick="showPage('programs')">
+          <div class="prog-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#007A6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="prog-title">Cyber Safety 101</div>
+          <p class="prog-desc">Spot scams before they spot you. Build strong passwords, enable two-factor authentication, and take control of your digital privacy — step by step.</p>
+          <a class="prog-link" href="#" onclick="showPage('programs')">Learn more →</a>
+        </div>
+        <div class="program-card" onclick="showPage('programs')">
+          <div class="prog-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#007A6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <div class="prog-title">Online Kindness Challenge</div>
+          <p class="prog-desc">An empathy-driven workshop that explores cyberbullying, digital respect, and how our words online carry real-world weight.</p>
+          <a class="prog-link" href="#" onclick="showPage('programs')">Learn more →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="how-bg">
+    <div class="section-inner">
+      <div class="section-header center">
+        <div class="section-label">How it works</div>
+        <h2 class="section-title">Simple from start to finish</h2>
+        <p class="section-sub">Getting a workshop at your location takes three steps and costs nothing.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>Request a workshop</h3>
+          <p>Fill out our short contact form — let us know your location, group size, and preferred topic.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>We confirm &amp; prepare</h3>
+          <p>We'll reach out within 48 hours to confirm a date and customize the session for your audience.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>Learn together</h3>
+          <p>We come to you — in-person or online — for a 60–90 minute hands-on session, completely free.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact -->
+  <section>
+    <div class="section-inner">
+      <div class="section-header center">
+        <div class="section-label">Our impact</div>
+        <h2 class="section-title">Numbers coming soon</h2>
+        <p class="section-sub">We just launched. Every workshop we run adds to this — check back as we grow.</p>
+      </div>
+      <div class="impact-grid">
+        <div class="impact-card">
+          <div class="impact-soon">—</div>
+          <div class="impact-label">Workshops delivered</div>
+          <div class="impact-badge">Coming soon</div>
+        </div>
+        <div class="impact-card">
+          <div class="impact-soon">—</div>
+          <div class="impact-label">Participants reached</div>
+          <div class="impact-badge">Coming soon</div>
+        </div>
+        <div class="impact-card">
+          <div class="impact-soon">—</div>
+          <div class="impact-label">Reported more confident</div>
+          <div class="impact-badge">Coming soon</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA band -->
+  <section style="background:var(--navy);padding:72px 5%">
+    <div style="max-width:1080px;margin:0 auto;text-align:center;position:relative">
+      <div class="hero-grid-bg" style="position:absolute;inset:0;border-radius:24px"></div>
+      <div style="position:relative;z-index:1">
+        <div class="section-label" style="color:var(--teal)">Ready to start?</div>
+        <h2 style="font-size:clamp(24px,3vw,40px);font-weight:700;color:var(--white);margin:12px 0 16px;letter-spacing:-0.02em">Bring a workshop to your community</h2>
+        <p style="font-size:16px;color:rgba(255,255,255,0.55);max-width:480px;margin:0 auto 32px;line-height:1.7">Whether you run a senior center, a library, a school club, or a community group — we'd love to work with you.</p>
+        <a href="#" class="btn-primary" onclick="showPage('contact')">Request a free workshop
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /home -->
+
+
+<!-- ══════════════════════════ PROGRAMS PAGE -->
+<div class="page" id="page-programs">
+
+  <div class="prog-page-hero">
+    <div class="hero-grid-bg"></div>
+    <div class="prog-page-inner">
+      <div class="page-hero-tag">Our Programs</div>
+      <h1 class="page-hero-title">Three workshops.<br>One goal: digital confidence.</h1>
+      <p class="page-hero-sub">Every session is free, hands-on, and designed to make technology feel accessible — not intimidating.</p>
+    </div>
+  </div>
+
+  <!-- Program 1 -->
+  <div class="prog-section">
+    <div class="prog-full">
+      <div>
+        <div class="prog-full-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#007A6B" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+        </div>
+        <div class="prog-full-sub">Program 01 · 60–90 minutes</div>
+        <h2>AI Basics for Everyday Life</h2>
+        <p>Artificial intelligence is already part of your daily life — from your phone's autocomplete to the recommendations on Netflix. But what actually is it? And how do you use it on your own terms?</p>
+        <p>This workshop demystifies AI in plain English. We'll explore popular tools like ChatGPT and Google Gemini through live demos, practical exercises, and plenty of time for questions. You'll leave knowing exactly how to use AI to make your day-to-day tasks easier — safely and confidently.</p>
+        <ul class="prog-topics">
+          <li>What AI is — and what it definitely is not</li>
+          <li>Live walkthrough of ChatGPT and Google Gemini</li>
+          <li>How to write prompts that actually get useful results</li>
+          <li>Using AI for writing, planning, and everyday questions</li>
+          <li>How to fact-check AI responses and spot hallucinations</li>
+          <li>Privacy: what these tools do (and don't do) with your data</li>
+        </ul>
+        <a href="#" class="btn-teal-outline" onclick="showPage('contact')">Request this workshop
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </a>
+      </div>
+      <div class="prog-visual">
+        <div class="hero-grid-bg"></div>
+        <div class="prog-visual-inner">
+          <div class="prog-visual-item">
+            <div class="prog-visual-item-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div>
+              <div class="prog-visual-item-title">Live demo</div>
+              <div class="prog-visual-item-text">See ChatGPT answer real questions in real time</div>
+            </div>
+          </div>
+          <div class="prog-visual-item">
+            <div class="prog-visual-item-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            </div>
+            <div>
+              <div class="prog-visual-item-title">Hands-on prompting</div>
+              <div class="prog-visual-item-text">Write your first AI prompt — guided step by step</div>
+            </div>
+          </div>
+          <div class="prog-visual-item">
+            <div class="prog-visual-item-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <div class="prog-visual-item-title">No experience needed</div>
+              <div class="prog-visual-item-text">Designed for complete beginners, paced for comfort</div>
+            </div>
+          </div>
+          <div class="prog-visual-item">
+            <div class="prog-visual-item-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <div>
+              <div class="prog-visual-item-title">Take-home guide</div>
+              <div class="prog-visual-item-text">A printed cheat sheet to keep and refer back to</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Program 2 -->
+  <div class="prog-section">
+    <div class="prog-full flip">
+      <div>
+        <div class="prog-full-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#007A6B" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="prog-full-sub">Program 02 · 60–90 minutes</div>
+        <h2>Cyber Safety 101</h2>
+        <p>Online scams cost Canadians over $530 million in 2022 alone — and seniors are disproportionately targeted. But staying safe online doesn't have to be complicated.</p>
+        <p>This workshop walks through the most common threats people face online — from phishing emails to fake tech support calls — and gives you clear, practical steps to protect yourself. We'll go through real examples, hands-on exercises, and a checklist you can start using today.</p>
+        <ul class="prog-topics">
+          <li>How to spot a phishing email or scam text message</li>
+          <li>Creating strong passwords — and actually remembering them</li>
+          <li>Setting up two-factor authentication on your accounts</li>
+          <li>Understanding privacy settings on your phone and apps</li>
+          <li>What to do if you think you've been scammed</li>
+          <li>Safe online shopping and banking practices</li>
+        </ul>
+        <a href="#" class="btn-teal-outline" onclick="showPage('contact')">Request this workshop
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </a>
+      </div>
+      <div class="prog-visual">
+        <div class="hero-grid-bg"></div>
+        <div class="prog-visual-inner">
+          <div class="prog-visual-item">
+            <div class="prog-visual-item-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="prog-visual-item-title">Phishing examples</div>
+              <div class="prog-visual-item-text">Real scam emails — learn the exact signs to look for</div>
+            </div>
+          </div>
+          <div class="prog-visual-item">
+            <div class="prog-visual-item-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <div>
+              <div class="prog-visual-item-title">Password workshop</div>
+              <div class="prog-visual-item-text">Build a strong password live, in the session</div>
+            </div>
+          </div>
+          <div class="prog-visual-item">
+            <div class="prog-visual-item-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+            </div>
+            <div>
+              <div class="prog-visual-item-title">Device walkthrough</div>
+              <div class="prog-visual-item-text">iPhone &amp; Android privacy settings, step by step</div>
+            </div>
+          </div>
+          <div class="prog-visual-item">
+            <div class="prog-visual-item-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            </div>
+            <div>
+              <div class="prog-visual-item-title">Cyber Safety Checklist</div>
+              <div class="prog-visual-item-text">A printable checklist to protect yourself starting today</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Program 3 -->
+  <div class="prog-section">
+    <div class="prog-full">
+      <div>
+        <div class="prog-full-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#007A6B" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="prog-full-sub">Program 03 · 60–75 minutes</div>
+        <h2>Online Kindness Challenge</h2>
+        <p>The internet connects billions of people — but that connection comes with real responsibilities. Cyberbullying, harassment, and digital unkindness are more common than most people realize, and their effects are just as real as anything that happens offline.</p>
+        <p>This empathy-driven workshop is designed for youth and school groups. Through discussion, real scenarios, and interactive activities, participants explore what it means to be a good digital citizen — and what they can do when they witness or experience unkindness online.</p>
+        <ul class="prog-topics">
+          <li>What cyberbullying is — and how it differs from offline bullying</li>
+          <li>The real impact of online words on mental health</li>
+          <li>Bystander responsibility: what to do when you see it happen</li>
+          <li>How to report and block on major platforms</li>
+          <li>Building a positive digital footprint</li>
+          <li>The Online Kindness Pledge — a group commitment activity</li>
+        </ul>
+        <a href="#" class="btn-teal-outline" onclick="showPage('contact')">Request this workshop
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </a>
+      </div>
+      <div class="prog-visual">
+        <div class="hero-grid-bg"></div>
+        <div class="prog-visual-inner">
+          <div class="prog-visual-item">
+            <div class="prog-visual-item-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div>
+              <div class="prog-visual-item-title">Real scenarios</div>
+              <div class="prog-visual-item-text">Discussion-based activities using real-world situations</div>
+            </div>
+          </div>
+          <div class="prog-visual-item">
+            <div class="prog-visual-item-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div>
+              <div class="prog-visual-item-title">Group pledge</div>
+              <div class="prog-visual-item-text">Participants commit to a shared Online Kindness standard</div>
+            </div>
+          </div>
+          <div class="prog-visual-item">
+            <div class="prog-visual-item-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <div class="prog-visual-item-title">Platform safety</div>
+              <div class="prog-visual-item-text">How to report, block, and protect yourself on any platform</div>
+            </div>
+          </div>
+          <div class="prog-visual-item">
+            <div class="prog-visual-item-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <div>
+              <div class="prog-visual-item-title">Ideal for schools</div>
+              <div class="prog-visual-item-text">Perfect for classrooms, student councils, and youth groups</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section style="background:var(--navy);padding:72px 5%">
+    <div style="max-width:1080px;margin:0 auto;text-align:center;position:relative">
+      <div class="hero-grid-bg" style="position:absolute;inset:0;border-radius:24px"></div>
+      <div style="position:relative;z-index:1">
+        <h2 style="font-size:clamp(22px,3vw,36px);font-weight:700;color:var(--white);margin-bottom:14px;letter-spacing:-0.02em">Not sure which workshop fits your group?</h2>
+        <p style="font-size:15px;color:rgba(255,255,255,0.55);max-width:440px;margin:0 auto 28px;line-height:1.7">Tell us about your audience in the contact form and we'll recommend the right session — or combine elements from multiple programs.</p>
+        <a href="#" class="btn-primary" onclick="showPage('contact')">Get in touch
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /programs -->
+
+
+<!-- ══════════════════════════ ABOUT PAGE -->
+<div class="page" id="page-about">
+
+  <div class="prog-page-hero">
+    <div class="hero-grid-bg"></div>
+    <div class="prog-page-inner">
+      <div class="page-hero-tag">About</div>
+      <h1 class="page-hero-title">Built from a belief that technology belongs to everyone.</h1>
+      <p class="page-hero-sub">Tech Literacy Network is a youth-led nonprofit based in Brampton, Ontario.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="about-split">
+      <div class="about-photo-wrap">
+        <div class="about-photo-box">
+          <div class="about-photo-placeholder">
+            <div class="about-photo-placeholder-circle">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(0,194,168,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <span>Add your photo here<br><span style="font-size:11px;opacity:0.6">(replace in Wix)</span></span>
+          </div>
+        </div>
+        <div class="about-photo-caption">
+          <strong>Gurnoor Kaur</strong>
+          Founder, Tech Literacy Network<br>Brampton, Ontario
+        </div>
+      </div>
+      <div class="about-content">
+        <div class="section-label">Our story</div>
+        <h2>Hi, I'm Gurnoor.</h2>
+        <p class="about-lead">I started Tech Literacy Network because I watched technology widen the gap between the people who understood it and the people who didn't — and I didn't think that was okay.</p>
+        <div class="about-body">
+          <p>Growing up, I noticed something that bothered me: the people most likely to be scammed online, most likely to feel confused or left behind by technology, were often the people no one was teaching. My grandparents. My neighbours. Seniors in my community who had built entire lives before smartphones existed and were now expected to navigate a world that had digitized almost overnight.</p>
+          <p>At the same time, I was learning about AI, cybersecurity, and digital literacy — and I kept thinking: this doesn't have to be complicated. These concepts, when explained in plain language with real examples and no condescension, are things anyone can understand. The barrier isn't ability. It's access.</p>
+          <div class="about-quote">
+            <p>"The internet is safer when everyone understands it. Tech Literacy Network exists to make that a reality — one workshop at a time."</p>
+          </div>
+          <p>Tech Literacy Network runs free, hands-on workshops for seniors, youth, and community groups in Brampton and the surrounding Peel Region. Every session is designed around the people in the room: no jargon, no assumptions, no rushing. Just honest, practical learning.</p>
+          <p>We're early. We're growing. And if you're reading this — whether you run a senior center, a school, a library, or just want to learn — I'd love to bring a workshop to your community.</p>
+        </div>
+        <div class="about-values">
+          <div class="value-card">
+            <div class="value-card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h4>Accessibility first</h4>
+            <p>Every workshop is free, jargon-free, and designed for people with zero tech background.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h4>Community-rooted</h4>
+            <p>We come to you. Senior centers, libraries, schools — wherever your people already are.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            </div>
+            <h4>Impact-driven</h4>
+            <p>We measure confidence before and after every session so we can prove — and improve — what we do.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <h4>Built to scale</h4>
+            <p>Starting in Brampton. Working toward a chapter model that can reach every province in Canada.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /about -->
+
+
+<!-- ══════════════════════════ BLOG PAGE -->
+<div class="page" id="page-blog">
+
+  <div class="prog-page-hero">
+    <div class="hero-grid-bg"></div>
+    <div class="prog-page-inner">
+      <div class="page-hero-tag">Blog</div>
+      <h1 class="page-hero-title">Insights on AI, cyber safety, and digital life.</h1>
+      <p class="page-hero-sub">Plain-English articles on the topics we teach — written for everyone, not just tech people.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="section-inner">
+      <div class="blog-grid">
+        <div class="blog-card">
+          <div class="blog-thumb">
+            <div class="hero-grid-bg"></div>
+            <div class="blog-thumb-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+          </div>
+          <div class="blog-body">
+            <div class="blog-tag">Cyber Safety</div>
+            <div class="blog-title">5 signs that email is a scam — and what to do about it</div>
+            <p class="blog-excerpt">Phishing emails have gotten sophisticated. Here's exactly what to look for, with real examples, so you never get fooled again.</p>
+            <div class="blog-meta"><span>Gurnoor Kaur</span><div class="blog-meta-dot"></div><span>5 min read</span><div class="blog-meta-dot"></div><span>Replace with your date</span></div>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-thumb">
+            <div class="hero-grid-bg"></div>
+            <div class="blog-thumb-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+            </div>
+          </div>
+          <div class="blog-body">
+            <div class="blog-tag">AI</div>
+            <div class="blog-title">What is ChatGPT, really? A plain-English explanation for everyone</div>
+            <p class="blog-excerpt">No buzzwords. No hype. Just an honest breakdown of what AI chatbots are, how they work, and why they're not as scary as they seem.</p>
+            <div class="blog-meta"><span>Gurnoor Kaur</span><div class="blog-meta-dot"></div><span>6 min read</span><div class="blog-meta-dot"></div><span>Replace with your date</span></div>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-thumb">
+            <div class="hero-grid-bg"></div>
+            <div class="blog-thumb-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+          </div>
+          <div class="blog-body">
+            <div class="blog-tag">Cyber Safety</div>
+            <div class="blog-title">The one thing you can do today to protect all your accounts</div>
+            <p class="blog-excerpt">Two-factor authentication sounds technical. It isn't. Here's a step-by-step guide to turning it on for the accounts that matter most.</p>
+            <div class="blog-meta"><span>Gurnoor Kaur</span><div class="blog-meta-dot"></div><span>4 min read</span><div class="blog-meta-dot"></div><span>Replace with your date</span></div>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-thumb">
+            <div class="hero-grid-bg"></div>
+            <div class="blog-thumb-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+          </div>
+          <div class="blog-body">
+            <div class="blog-tag">Digital Citizenship</div>
+            <div class="blog-title">Cyberbullying isn't just a teenager problem — here's why it matters to everyone</div>
+            <p class="blog-excerpt">Online harassment affects people of all ages. Understanding it is the first step to stopping it — in your family, your school, and your community.</p>
+            <div class="blog-meta"><span>Gurnoor Kaur</span><div class="blog-meta-dot"></div><span>7 min read</span><div class="blog-meta-dot"></div><span>Replace with your date</span></div>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-thumb">
+            <div class="hero-grid-bg"></div>
+            <div class="blog-thumb-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+            </div>
+          </div>
+          <div class="blog-body">
+            <div class="blog-tag">Privacy</div>
+            <div class="blog-title">Which apps are tracking you right now — and how to stop them</div>
+            <p class="blog-excerpt">Your phone knows more about you than you might think. Here's how to audit your app permissions and take back your privacy in under 10 minutes.</p>
+            <div class="blog-meta"><span>Gurnoor Kaur</span><div class="blog-meta-dot"></div><span>5 min read</span><div class="blog-meta-dot"></div><span>Replace with your date</span></div>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-thumb">
+            <div class="hero-grid-bg"></div>
+            <div class="blog-thumb-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            </div>
+          </div>
+          <div class="blog-body">
+            <div class="blog-tag">Cyber Safety</div>
+            <div class="blog-title">Safe online shopping: a checklist before you enter your card number</div>
+            <p class="blog-excerpt">Fake stores, skimming attacks, and too-good-to-be-true deals. Here's exactly how to verify a site is safe before you buy anything online.</p>
+            <div class="blog-meta"><span>Gurnoor Kaur</span><div class="blog-meta-dot"></div><span>4 min read</span><div class="blog-meta-dot"></div><span>Replace with your date</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /blog -->
+
+
+<!-- ══════════════════════════ GALLERY PAGE -->
+<div class="page" id="page-gallery">
+
+  <div class="prog-page-hero">
+    <div class="hero-grid-bg"></div>
+    <div class="prog-page-inner">
+      <div class="page-hero-tag">Gallery</div>
+      <h1 class="page-hero-title">Workshops in action.</h1>
+      <p class="page-hero-sub">Photos from our sessions — add your own as you run more workshops.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="section-inner">
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <div class="hero-grid-bg"></div>
+          <div class="gallery-placeholder">
+            <div class="gallery-placeholder-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(0,194,168,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            </div>
+            <span>Add your featured photo</span>
+          </div>
+          <div class="gallery-caption">Workshop · AI Basics for Everyday Life</div>
+        </div>
+        <div class="gallery-item">
+          <div class="hero-grid-bg"></div>
+          <div class="gallery-placeholder">
+            <div class="gallery-placeholder-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(0,194,168,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+            <span>Add photo</span>
+          </div>
+          <div class="gallery-caption">Workshop setup</div>
+        </div>
+        <div class="gallery-item">
+          <div class="hero-grid-bg"></div>
+          <div class="gallery-placeholder">
+            <div class="gallery-placeholder-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(0,194,168,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+            <span>Add photo</span>
+          </div>
+          <div class="gallery-caption">Handouts</div>
+        </div>
+        <div class="gallery-item">
+          <div class="hero-grid-bg"></div>
+          <div class="gallery-placeholder">
+            <div class="gallery-placeholder-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(0,194,168,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+            <span>Add photo</span>
+          </div>
+          <div class="gallery-caption">Slide deck</div>
+        </div>
+        <div class="gallery-item">
+          <div class="hero-grid-bg"></div>
+          <div class="gallery-placeholder">
+            <div class="gallery-placeholder-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(0,194,168,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+            <span>Add photo</span>
+          </div>
+          <div class="gallery-caption">Cyber Safety 101</div>
+        </div>
+        <div class="gallery-item">
+          <div class="hero-grid-bg"></div>
+          <div class="gallery-placeholder">
+            <div class="gallery-placeholder-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(0,194,168,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+            <span>Add photo</span>
+          </div>
+          <div class="gallery-caption">Community event</div>
+        </div>
+        <div class="gallery-item">
+          <div class="hero-grid-bg"></div>
+          <div class="gallery-placeholder">
+            <div class="gallery-placeholder-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(0,194,168,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+            <span>Add photo</span>
+          </div>
+          <div class="gallery-caption">Online Kindness Challenge</div>
+        </div>
+        <div class="gallery-item">
+          <div class="hero-grid-bg"></div>
+          <div class="gallery-placeholder">
+            <div class="gallery-placeholder-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(0,194,168,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+            <span>Add photo</span>
+          </div>
+          <div class="gallery-caption">Virtual session</div>
+        </div>
+      </div>
+      <p style="text-align:center;font-size:13px;color:var(--text-light);margin-top:32px">Replace placeholder boxes with real workshop photos as you run sessions.</p>
+    </div>
+  </section>
+
+</div><!-- /gallery -->
+
+
+<!-- ══════════════════════════ CONTACT PAGE -->
+<div class="page" id="page-contact">
+
+  <div class="prog-page-hero">
+    <div class="hero-grid-bg"></div>
+    <div class="prog-page-inner">
+      <div class="page-hero-tag">Contact</div>
+      <h1 class="page-hero-title">Request a free workshop.</h1>
+      <p class="page-hero-sub">Fill out the form and we'll get back to you within 48 hours to discuss dates, location, and the right program for your group.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2>Let's bring digital confidence to your community</h2>
+        <p>We serve senior centers, libraries, schools, community centers, and any group that wants to learn. All workshops are free, and we bring everything — all you need is a room and your people.</p>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#007A6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div class="contact-detail-label">Email</div>
+            <div class="contact-detail-value">techliteracynetwork@gmail.com</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#007A6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="contact-detail-label">Phone</div>
+            <div class="contact-detail-value">(647) 852-3544</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#007A6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="contact-detail-label">Based in</div>
+            <div class="contact-detail-value">Brampton, Ontario — serving Peel Region &amp; GTA</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#007A6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </div>
+          <div>
+            <div class="contact-detail-label">Instagram</div>
+            <div class="contact-detail-value">@techliteracynetwork</div>
+          </div>
+        </div>
+
+        <div style="margin-top:28px;padding:20px;background:var(--aqua);border-radius:14px;border:1px solid rgba(0,194,168,0.2)">
+          <div style="font-size:13px;font-weight:700;color:var(--teal-dim);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:8px">We'll respond within</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;color:var(--navy)">48 hours</div>
+          <div style="font-size:13px;color:var(--text-secondary);margin-top:4px">Mon – Fri, 9am – 6pm EST</div>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap">
+        <div class="form-title">Workshop request form</div>
+        <div class="form-sub">Tell us about your group and we'll take it from there.</div>
+        <form id="contact-form" onsubmit="handleFormSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First name *</label>
+              <input type="text" id="fname" name="fname" placeholder="Your first name" required>
+            </div>
+            <div class="form-group">
+              <label for="lname">Last name *</label>
+              <input type="text" id="lname" name="lname" placeholder="Your last name" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email address *</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(647) 000-0000">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="org">Organization / venue name *</label>
+            <input type="text" id="org" name="org" placeholder="e.g. Brampton Public Library, John Fraser Secondary School" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="program">Program of interest *</label>
+              <select id="program" name="program" required>
+                <option value="" disabled selected>Select a program</option>
+                <option>AI Basics for Everyday Life</option>
+                <option>Cyber Safety 101</option>
+                <option>Online Kindness Challenge</option>
+                <option>Not sure — help me decide</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="groupsize">Estimated group size</label>
+              <select id="groupsize" name="groupsize">
+                <option value="" disabled selected>Select range</option>
+                <option>1–10 people</option>
+                <option>11–25 people</option>
+                <option>26–50 people</option>
+                <option>50+ people</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="audience">Who is your audience? *</label>
+            <select id="audience" name="audience" required>
+              <option value="" disabled selected>Select audience</option>
+              <option>Seniors (60+)</option>
+              <option>Youth / students</option>
+              <option>Mixed ages</option>
+              <option>Adults (general community)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Anything else we should know?</label>
+            <textarea id="message" name="message" placeholder="Preferred dates, location details, accessibility needs, or any questions..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send request
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+          </button>
+          <p class="form-note">We'll never share your details. This form sends directly to Gurnoor.</p>
+        </form>
+        <div class="form-success" id="form-success">
+          <div class="form-success-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3>Request received!</h3>
+          <p>Thank you for reaching out. Gurnoor will be in touch within 48 hours to discuss your workshop.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /contact -->
+
+
+<!-- ══════════════════════════ FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="nav-brand" href="#" onclick="showPage('home')" style="margin-bottom:0">
+          <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="36" height="36" rx="9" fill="#00C2A8" fill-opacity="0.15"/>
+            <circle cx="18" cy="18" r="13" stroke="#00C2A8" stroke-width="1.2" stroke-dasharray="3 2"/>
+            <circle cx="18" cy="18" r="3.5" fill="#00C2A8"/>
+            <circle cx="18" cy="7"  r="2" fill="#0D2B45" stroke="#00C2A8" stroke-width="1.2"/>
+            <circle cx="28" cy="13" r="2" fill="#0D2B45" stroke="#00C2A8" stroke-width="1.2"/>
+            <circle cx="28" cy="23" r="2" fill="#0D2B45" stroke="#00C2A8" stroke-width="1.2"/>
+            <circle cx="18" cy="29" r="2" fill="#0D2B45" stroke="#00C2A8" stroke-width="1.2"/>
+            <circle cx="8"  cy="23" r="2" fill="#0D2B45" stroke="#00C2A8" stroke-width="1.2"/>
+            <circle cx="8"  cy="13" r="2" fill="#0D2B45" stroke="#00C2A8" stroke-width="1.2"/>
+            <line x1="18" y1="18" x2="18" y2="9"  stroke="#00C2A8" stroke-width="1" opacity="0.6"/>
+            <line x1="18" y1="18" x2="27" y2="13.5" stroke="#00C2A8" stroke-width="1" opacity="0.6"/>
+            <line x1="18" y1="18" x2="27" y2="22.5" stroke="#00C2A8" stroke-width="1" opacity="0.6"/>
+            <line x1="18" y1="18" x2="18" y2="27" stroke="#00C2A8" stroke-width="1" opacity="0.6"/>
+            <line x1="18" y1="18" x2="9"  y2="22.5" stroke="#00C2A8" stroke-width="1" opacity="0.6"/>
+            <line x1="18" y1="18" x2="9"  y2="13.5" stroke="#00C2A8" stroke-width="1" opacity="0.6"/>
+          </svg>
+          <div class="nav-brand-text" style="color:white">Tech Literacy Network<span>Brampton, Ontario</span></div>
+        </a>
+        <p>Free AI and cyber safety workshops for seniors and youth. Empowering digital citizens, one session at a time.</p>
+        <div class="footer-social">
+          <a class="social-btn" href="https://instagram.com/techliteracynetwork" target="_blank" aria-label="Instagram">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a onclick="showPage('home')">Home</a></li>
+          <li><a onclick="showPage('programs')">Programs</a></li>
+          <li><a onclick="showPage('about')">About</a></li>
+          <li><a onclick="showPage('blog')">Blog</a></li>
+          <li><a onclick="showPage('gallery')">Gallery</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Programs</h4>
+        <ul>
+          <li><a onclick="showPage('programs')">AI Basics for Everyday Life</a></li>
+          <li><a onclick="showPage('programs')">Cyber Safety 101</a></li>
+          <li><a onclick="showPage('programs')">Online Kindness Challenge</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:techliteracynetwork@gmail.com">techliteracynetwork@gmail.com</a></li>
+          <li><a href="tel:6478523544">(647) 852-3544</a></li>
+          <li><a onclick="showPage('contact')">Request a workshop</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Tech Literacy Network. All rights reserved. Brampton, Ontario, Canada.</p>
+      <div class="footer-badge">Currently accepting workshop requests</div>
+    </div>
+  </div>
+</footer>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  function showPage(page) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    const target = document.getElementById('page-' + page);
+    if (target) target.classList.add('active');
+    const navLink = document.getElementById('nav-' + page);
+    if (navLink) navLink.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const navLinks = document.getElementById('nav-links');
+    navLinks.classList.remove('open');
+  }
+
+  document.getElementById('nav-toggle').addEventListener('click', function() {
+    document.getElementById('nav-links').classList.toggle('open');
+  });
+
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    document.getElementById('contact-form').style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+  }
+</script>
+</body>
+</html>
