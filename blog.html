@@ -1,11 +1,135 @@
+
 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog - Tech Literacy Network</title>
+<link rel="stylesheet" href="/style.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-77QTJ9Q20S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-77QTJ9Q20S');
+</script>
+</head>
+<body>
+<nav id="main-nav">
+  <a class="nav-brand" href="/">
+    <img src="/logo.png" width="36" height="36" alt="Tech Literacy Network logo" style="display:block;border-radius:6px">
+    <div class="nav-brand-text">Tech Literacy Network</div>
+  </a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/programs">Programs</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/blog">Blog</a></li>
+    <li><a href="/gallery" class="active">Gallery</a></li>
+    <li><a href="/contact" class="nav-cta">Request a Workshop</a></li>
+  </ul>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<section style="min-height:80vh;display:flex;align-items:center;justify-content:center;background:var(--navy);position:relative;overflow:hidden">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div style="position:relative;z-index:1;text-align:center;padding:0 5%">
+
+    <!-- Logo watermark -->
+    <div style="margin-bottom:32px;display:flex;justify-content:center">
+      <svg width="80" height="80" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.9">
+        <path d="M 22,40 Q 22,28 34,28 L 96,40 L 96,166 L 22,166 Z" stroke="#00C2A8" stroke-width="7" fill="none" stroke-linejoin="round"/>
+        <path d="M 104,40 L 166,28 Q 178,28 178,40 L 178,166 L 104,166 Z" stroke="#00C2A8" stroke-width="7" fill="none" stroke-linejoin="round"/>
+        <polyline points="96,166 100,175 104,166" stroke="#00C2A8" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="132" cy="50" r="7" stroke="#00C2A8" stroke-width="7" fill="none"/>
+        <line x1="132" y1="57" x2="132" y2="84" stroke="#00C2A8" stroke-width="7" stroke-linecap="round"/>
+        <circle cx="132" cy="96" r="12" stroke="#00C2A8" stroke-width="7" fill="#00C2A8"/>
+        <line x1="144" y1="96" x2="163" y2="96" stroke="#00C2A8" stroke-width="7" stroke-linecap="round"/>
+        <circle cx="170" cy="96" r="7" stroke="#00C2A8" stroke-width="7" fill="none"/>
+      </svg>
+    </div>
+
+    <div style="display:inline-block;background:rgba(0,194,168,0.12);border:1px solid rgba(0,194,168,0.25);color:#00C2A8;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 16px;border-radius:100px;margin-bottom:24px">Blog</div>
+
+    <h1 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(36px,5vw,64px);font-weight:700;color:#ffffff;letter-spacing:-0.03em;margin-bottom:16px">Coming soon.</h1>
+
+    <p style="font-size:17px;color:rgba(255,255,255,0.5);line-height:1.7;max-width:440px;margin:0 auto 40px">We are just getting started. Blogs will live here as we grow.</p>
+
+    <a href="/contact" class="btn-primary">Request a workshop
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+    </a>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="nav-brand" href="/" style="margin-bottom:0">
+          <img src="/logo.png" width="36" height="36" alt="Tech Literacy Network logo" style="display:block;border-radius:6px">
+          <div class="nav-brand-text" style="color:white">Tech Literacy Network</div>
+        </a>
+        <p>Free AI and cyber safety workshops for seniors and youth. Empowering digital citizens, one session at a time.</p>
+        <div class="footer-social">
+          <a class="social-btn" href="https://instagram.com/techliteracynetwork" target="_blank" aria-label="Instagram">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/programs">Programs</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/gallery">Gallery</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Programs</h4>
+        <ul>
+          <li><a href="/programs">AI Basics for Everyday Life</a></li>
+          <li><a href="/programs">Cyber Safety 101</a></li>
+          <li><a href="/programs">Online Kindness Challenge</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:techliteracynetwork@gmail.com">techliteracynetwork@gmail.com</a></li>
+          <li><a href="tel:6478523544">(647) 852-3544</a></li>
+          <li><a href="/contact">Request a workshop</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Tech Literacy Network. All rights reserved. Ontario, Canada.</p>
+      <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+        <div class="footer-badge">Currently accepting workshop requests</div>
+        <a href="/privacy" style="font-size:12px;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='#00C2A8'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+  document.getElementById('nav-toggle').addEventListener('click', function() {
+    document.getElementById('nav-links').classList.toggle('open');
+  });
+</script>
+</body>
+</html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Blog — Tech Literacy Network</title>
 <link rel="stylesheet" href="/style.css">
-<!-- Google Analytics: replace G-77QTJ9Q20S with your real Measurement ID -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-77QTJ9Q20S"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -178,4 +302,4 @@
   });
 </script>
 </body>
-</html>
+</html> -->
