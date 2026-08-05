@@ -15,7 +15,9 @@
 </script>
 <script>
   function openBoardModal(id) {
-    document.getElementById(id).classList.add('open');
+    const overlay = document.getElementById(id);
+    overlay.classList.add('open');
+    overlay.scrollTop = 0;
     document.body.style.overflow = 'hidden';
   }
   function closeBoardModal(id) {
@@ -169,14 +171,14 @@
       <input type="hidden" name="_subject" value="Board Application: Vice Chair - Tech Literacy Network">
       <input type="hidden" name="position" value="Vice Chair">
       <div class="form-row">
-        <div class="form-group"><label for="vc-fname">First name *</label><input type="text" id="vc-fname" name="fname" required></div>
-        <div class="form-group"><label for="vc-lname">Last name *</label><input type="text" id="vc-lname" name="lname" required></div>
+        <div class="form-group"><label for="vc-fname">First name <span class="required-mark">*</span></label><input type="text" id="vc-fname" name="fname" required></div>
+        <div class="form-group"><label for="vc-lname">Last name <span class="required-mark">*</span></label><input type="text" id="vc-lname" name="lname" required></div>
       </div>
       <div class="form-row">
-        <div class="form-group"><label for="vc-email">Email address *</label><input type="email" id="vc-email" name="email" required></div>
+        <div class="form-group"><label for="vc-email">Email address <span class="required-mark">*</span></label><input type="email" id="vc-email" name="email" required></div>
         <div class="form-group"><label for="vc-phone">Phone number</label><input type="tel" id="vc-phone" name="phone"></div>
       </div>
-      <div class="form-group"><label for="vc-hours">How many hours per week can you commit? *</label>
+      <div class="form-group"><label for="vc-hours">How many hours per week can you commit? <span class="required-mark">*</span></label>
         <select id="vc-hours" name="hours_per_week" required>
           <option value="" disabled selected>Select range</option>
           <option>1 to 3 hours</option>
@@ -185,8 +187,8 @@
           <option>10+ hours</option>
         </select>
       </div>
-      <div class="form-group"><label for="vc-lead">What leadership or organizational experience do you have? *</label><textarea id="vc-lead" name="leadership_experience" placeholder="School clubs, teams, jobs, other volunteer roles..." required></textarea></div>
-      <div class="form-group"><label for="vc-excited">Vice Chair means stepping in wherever TLN needs help. What are you most excited to help with? *</label><textarea id="vc-excited" name="excited_about" required></textarea></div>
+      <div class="form-group"><label for="vc-lead">What leadership or organizational experience do you have? <span class="required-mark">*</span></label><textarea id="vc-lead" name="leadership_experience" placeholder="School clubs, teams, jobs, other volunteer roles..." required></textarea></div>
+      <div class="form-group"><label for="vc-excited">Vice Chair means stepping in wherever TLN needs help. What are you most excited to help with? <span class="required-mark">*</span></label><textarea id="vc-excited" name="excited_about" required></textarea></div>
       <div class="form-group"><label for="vc-links">LinkedIn or portfolio link</label><input type="text" id="vc-links" name="links" placeholder="Optional"></div>
       <button type="submit" class="form-submit">Submit application
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
@@ -214,14 +216,14 @@
       <input type="hidden" name="_subject" value="Board Application: Secretary - Tech Literacy Network">
       <input type="hidden" name="position" value="Secretary">
       <div class="form-row">
-        <div class="form-group"><label for="sec-fname">First name *</label><input type="text" id="sec-fname" name="fname" required></div>
-        <div class="form-group"><label for="sec-lname">Last name *</label><input type="text" id="sec-lname" name="lname" required></div>
+        <div class="form-group"><label for="sec-fname">First name <span class="required-mark">*</span></label><input type="text" id="sec-fname" name="fname" required></div>
+        <div class="form-group"><label for="sec-lname">Last name <span class="required-mark">*</span></label><input type="text" id="sec-lname" name="lname" required></div>
       </div>
       <div class="form-row">
-        <div class="form-group"><label for="sec-email">Email address *</label><input type="email" id="sec-email" name="email" required></div>
+        <div class="form-group"><label for="sec-email">Email address <span class="required-mark">*</span></label><input type="email" id="sec-email" name="email" required></div>
         <div class="form-group"><label for="sec-phone">Phone number</label><input type="tel" id="sec-phone" name="phone"></div>
       </div>
-      <div class="form-group"><label for="sec-hours">How many hours per week can you commit? *</label>
+      <div class="form-group"><label for="sec-hours">How many hours per week can you commit? <span class="required-mark">*</span></label>
         <select id="sec-hours" name="hours_per_week" required>
           <option value="" disabled selected>Select range</option>
           <option>1 to 3 hours</option>
@@ -238,8 +240,8 @@
           <label class="board-checkbox-row"><input type="checkbox" name="tools" value="Other"> Other</label>
         </div>
       </div>
-      <div class="form-group"><label for="sec-exp">Have you kept meeting notes, records, or documentation before? Tell us about it. *</label><textarea id="sec-exp" name="documentation_experience" required></textarea></div>
-      <div class="form-group"><label for="sec-why">Why do you want to be TLN's Secretary? *</label><textarea id="sec-why" name="why_interested" required></textarea></div>
+      <div class="form-group"><label for="sec-exp">Have you kept meeting notes, records, or documentation before? Tell us about it. <span class="required-mark">*</span></label><textarea id="sec-exp" name="documentation_experience" required></textarea></div>
+      <div class="form-group"><label for="sec-why">Why do you want to be TLN's Secretary? <span class="required-mark">*</span></label><textarea id="sec-why" name="why_interested" required></textarea></div>
       <button type="submit" class="form-submit">Submit application
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
       </button>
@@ -266,14 +268,14 @@
       <input type="hidden" name="_subject" value="Board Application: Treasurer - Tech Literacy Network">
       <input type="hidden" name="position" value="Treasurer">
       <div class="form-row">
-        <div class="form-group"><label for="tr-fname">First name *</label><input type="text" id="tr-fname" name="fname" required></div>
-        <div class="form-group"><label for="tr-lname">Last name *</label><input type="text" id="tr-lname" name="lname" required></div>
+        <div class="form-group"><label for="tr-fname">First name <span class="required-mark">*</span></label><input type="text" id="tr-fname" name="fname" required></div>
+        <div class="form-group"><label for="tr-lname">Last name <span class="required-mark">*</span></label><input type="text" id="tr-lname" name="lname" required></div>
       </div>
       <div class="form-row">
-        <div class="form-group"><label for="tr-email">Email address *</label><input type="email" id="tr-email" name="email" required></div>
+        <div class="form-group"><label for="tr-email">Email address <span class="required-mark">*</span></label><input type="email" id="tr-email" name="email" required></div>
         <div class="form-group"><label for="tr-phone">Phone number</label><input type="tel" id="tr-phone" name="phone"></div>
       </div>
-      <div class="form-group"><label for="tr-hours">How many hours per week can you commit? *</label>
+      <div class="form-group"><label for="tr-hours">How many hours per week can you commit? <span class="required-mark">*</span></label>
         <select id="tr-hours" name="hours_per_week" required>
           <option value="" disabled selected>Select range</option>
           <option>1 to 3 hours</option>
@@ -282,7 +284,7 @@
           <option>10+ hours</option>
         </select>
       </div>
-      <div class="form-group"><label for="tr-comfort">Are you comfortable with spreadsheets and financial tracking tools? *</label>
+      <div class="form-group"><label for="tr-comfort">Are you comfortable with spreadsheets and financial tracking tools? <span class="required-mark">*</span></label>
         <select id="tr-comfort" name="spreadsheet_comfort" required>
           <option value="" disabled selected>Select one</option>
           <option>Yes, very comfortable</option>
@@ -290,8 +292,8 @@
           <option>Not yet, but willing to learn</option>
         </select>
       </div>
-      <div class="form-group"><label for="tr-exp">Do you have experience with budgeting, bookkeeping, or finance? Tell us about it. *</label><textarea id="tr-exp" name="finance_experience" placeholder="Coursework, part-time jobs, managing funds for a club or team..." required></textarea></div>
-      <div class="form-group"><label for="tr-why">Why do you want to be TLN's Treasurer? *</label><textarea id="tr-why" name="why_interested" required></textarea></div>
+      <div class="form-group"><label for="tr-exp">Do you have experience with budgeting, bookkeeping, or finance? Tell us about it. <span class="required-mark">*</span></label><textarea id="tr-exp" name="finance_experience" placeholder="Coursework, part-time jobs, managing funds for a club or team..." required></textarea></div>
+      <div class="form-group"><label for="tr-why">Why do you want to be TLN's Treasurer? <span class="required-mark">*</span></label><textarea id="tr-why" name="why_interested" required></textarea></div>
       <button type="submit" class="form-submit">Submit application
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
       </button>
@@ -318,14 +320,14 @@
       <input type="hidden" name="_subject" value="Board Application: Director of Programs - Tech Literacy Network">
       <input type="hidden" name="position" value="Director of Programs">
       <div class="form-row">
-        <div class="form-group"><label for="pr-fname">First name *</label><input type="text" id="pr-fname" name="fname" required></div>
-        <div class="form-group"><label for="pr-lname">Last name *</label><input type="text" id="pr-lname" name="lname" required></div>
+        <div class="form-group"><label for="pr-fname">First name <span class="required-mark">*</span></label><input type="text" id="pr-fname" name="fname" required></div>
+        <div class="form-group"><label for="pr-lname">Last name <span class="required-mark">*</span></label><input type="text" id="pr-lname" name="lname" required></div>
       </div>
       <div class="form-row">
-        <div class="form-group"><label for="pr-email">Email address *</label><input type="email" id="pr-email" name="email" required></div>
+        <div class="form-group"><label for="pr-email">Email address <span class="required-mark">*</span></label><input type="email" id="pr-email" name="email" required></div>
         <div class="form-group"><label for="pr-phone">Phone number</label><input type="tel" id="pr-phone" name="phone"></div>
       </div>
-      <div class="form-group"><label for="pr-hours">How many hours per week can you commit? *</label>
+      <div class="form-group"><label for="pr-hours">How many hours per week can you commit? <span class="required-mark">*</span></label>
         <select id="pr-hours" name="hours_per_week" required>
           <option value="" disabled selected>Select range</option>
           <option>1 to 3 hours</option>
@@ -342,8 +344,8 @@
           <label class="board-checkbox-row"><input type="checkbox" name="program_interest" value="All three equally"> All three equally</label>
         </div>
       </div>
-      <div class="form-group"><label for="pr-exp">Do you have experience with curriculum design, teaching, or workshop facilitation? *</label><textarea id="pr-exp" name="teaching_experience" required></textarea></div>
-      <div class="form-group"><label for="pr-why">Why do you want to lead TLN's programs? *</label><textarea id="pr-why" name="why_interested" required></textarea></div>
+      <div class="form-group"><label for="pr-exp">Do you have experience with curriculum design, teaching, or workshop facilitation? <span class="required-mark">*</span></label><textarea id="pr-exp" name="teaching_experience" required></textarea></div>
+      <div class="form-group"><label for="pr-why">Why do you want to lead TLN's programs? <span class="required-mark">*</span></label><textarea id="pr-why" name="why_interested" required></textarea></div>
       <button type="submit" class="form-submit">Submit application
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
       </button>
@@ -370,14 +372,14 @@
       <input type="hidden" name="_subject" value="Board Application: Director of External Affairs - Tech Literacy Network">
       <input type="hidden" name="position" value="Director of External Affairs">
       <div class="form-row">
-        <div class="form-group"><label for="ext-fname">First name *</label><input type="text" id="ext-fname" name="fname" required></div>
-        <div class="form-group"><label for="ext-lname">Last name *</label><input type="text" id="ext-lname" name="lname" required></div>
+        <div class="form-group"><label for="ext-fname">First name <span class="required-mark">*</span></label><input type="text" id="ext-fname" name="fname" required></div>
+        <div class="form-group"><label for="ext-lname">Last name <span class="required-mark">*</span></label><input type="text" id="ext-lname" name="lname" required></div>
       </div>
       <div class="form-row">
-        <div class="form-group"><label for="ext-email">Email address *</label><input type="email" id="ext-email" name="email" required></div>
+        <div class="form-group"><label for="ext-email">Email address <span class="required-mark">*</span></label><input type="email" id="ext-email" name="email" required></div>
         <div class="form-group"><label for="ext-phone">Phone number</label><input type="tel" id="ext-phone" name="phone"></div>
       </div>
-      <div class="form-group"><label for="ext-hours">How many hours per week can you commit? *</label>
+      <div class="form-group"><label for="ext-hours">How many hours per week can you commit? <span class="required-mark">*</span></label>
         <select id="ext-hours" name="hours_per_week" required>
           <option value="" disabled selected>Select range</option>
           <option>1 to 3 hours</option>
@@ -386,7 +388,7 @@
           <option>10+ hours</option>
         </select>
       </div>
-      <div class="form-group"><label for="ext-cold">Are you comfortable with cold outreach, emails, calls, in-person asks? *</label>
+      <div class="form-group"><label for="ext-cold">Are you comfortable with cold outreach, emails, calls, in-person asks? <span class="required-mark">*</span></label>
         <select id="ext-cold" name="cold_outreach_comfort" required>
           <option value="" disabled selected>Select one</option>
           <option>Yes, very comfortable</option>
@@ -395,7 +397,7 @@
         </select>
       </div>
       <div class="form-group"><label for="ext-connections">Do you have existing connections with schools, libraries, or community orgs in Ontario?</label><textarea id="ext-connections" name="existing_connections" placeholder="Optional, list any you have"></textarea></div>
-      <div class="form-group"><label for="ext-why">Why do you want to lead TLN's outreach? *</label><textarea id="ext-why" name="why_interested" required></textarea></div>
+      <div class="form-group"><label for="ext-why">Why do you want to lead TLN's outreach? <span class="required-mark">*</span></label><textarea id="ext-why" name="why_interested" required></textarea></div>
       <button type="submit" class="form-submit">Submit application
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
       </button>
@@ -422,14 +424,14 @@
       <input type="hidden" name="_subject" value="Board Application: Director of Internal Affairs - Tech Literacy Network">
       <input type="hidden" name="position" value="Director of Internal Affairs">
       <div class="form-row">
-        <div class="form-group"><label for="int-fname">First name *</label><input type="text" id="int-fname" name="fname" required></div>
-        <div class="form-group"><label for="int-lname">Last name *</label><input type="text" id="int-lname" name="lname" required></div>
+        <div class="form-group"><label for="int-fname">First name <span class="required-mark">*</span></label><input type="text" id="int-fname" name="fname" required></div>
+        <div class="form-group"><label for="int-lname">Last name <span class="required-mark">*</span></label><input type="text" id="int-lname" name="lname" required></div>
       </div>
       <div class="form-row">
-        <div class="form-group"><label for="int-email">Email address *</label><input type="email" id="int-email" name="email" required></div>
+        <div class="form-group"><label for="int-email">Email address <span class="required-mark">*</span></label><input type="email" id="int-email" name="email" required></div>
         <div class="form-group"><label for="int-phone">Phone number</label><input type="tel" id="int-phone" name="phone"></div>
       </div>
-      <div class="form-group"><label for="int-hours">How many hours per week can you commit? *</label>
+      <div class="form-group"><label for="int-hours">How many hours per week can you commit? <span class="required-mark">*</span></label>
         <select id="int-hours" name="hours_per_week" required>
           <option value="" disabled selected>Select range</option>
           <option>1 to 3 hours</option>
@@ -446,8 +448,8 @@
           <label class="board-checkbox-row"><input type="checkbox" name="tools" value="Google Workspace"> Google Workspace</label>
         </div>
       </div>
-      <div class="form-group"><label for="int-exp">Do you have experience coordinating teams, projects, or events? *</label><textarea id="int-exp" name="coordination_experience" required></textarea></div>
-      <div class="form-group"><label for="int-why">Why do you want to keep TLN running behind the scenes? *</label><textarea id="int-why" name="why_interested" required></textarea></div>
+      <div class="form-group"><label for="int-exp">Do you have experience coordinating teams, projects, or events? <span class="required-mark">*</span></label><textarea id="int-exp" name="coordination_experience" required></textarea></div>
+      <div class="form-group"><label for="int-why">Why do you want to keep TLN running behind the scenes? <span class="required-mark">*</span></label><textarea id="int-why" name="why_interested" required></textarea></div>
       <button type="submit" class="form-submit">Submit application
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
       </button>
