@@ -14,9 +14,25 @@
   gtag('config', 'G-XXXXXXXXXX');
 </script>
 <script>
-  async function handleBoardFormSubmit(e) {
+  function openBoardModal(id) {
+    document.getElementById(id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeBoardModal(id) {
+    document.getElementById(id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.board-modal-overlay.open').forEach(function(el) {
+        el.classList.remove('open');
+      });
+      document.body.style.overflow = '';
+    }
+  });
+  async function handleModalFormSubmit(e, formId, successId) {
     e.preventDefault();
-    const form = document.getElementById('board-form');
+    const form = document.getElementById(formId);
     const btn = form.querySelector('.form-submit');
     const originalHTML = btn.innerHTML;
     btn.innerHTML = 'Sending...';
@@ -28,12 +44,12 @@
       });
       if (response.ok) {
         form.style.display = 'none';
-        document.getElementById('board-form-success').style.display = 'block';
+        document.getElementById(successId).style.display = 'block';
       } else {
         btn.innerHTML = originalHTML; btn.disabled = false; btn.style.opacity = '1';
         alert('Something went wrong. Please email us directly at techliteracynetwork@gmail.com');
       }
-    } catch(err) {
+    } catch (err) {
       btn.innerHTML = originalHTML; btn.disabled = false; btn.style.opacity = '1';
       alert('Something went wrong. Please email us directly at techliteracynetwork@gmail.com');
     }
@@ -72,38 +88,56 @@
   <div class="section-inner">
     <div class="section-label">Board of Directors</div>
     <h2 class="section-title">Six roles, open now</h2>
-    <p class="section-sub">Every role below shapes how TLN runs, from what we teach to who we reach. No prior board experience required, just commitment to the mission and a willingness to build something real.</p>
+    <p class="section-sub">Every role below shapes how TLN runs, from what we teach to who we reach. No prior board experience required, just commitment to the mission and a willingness to build something real. Tap apply on the role that fits you.</p>
 
     <div class="board-grid">
       <div class="board-card">
         <div class="board-card-number">01</div>
         <div class="board-card-title">Vice Chair</div>
         <div class="board-card-desc">Supports the board's leadership, helps set direction, and steps in wherever TLN needs it most.</div>
+        <button class="board-apply-link" onclick="openBoardModal('modal-vicechair')">Apply for this role
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </button>
       </div>
       <div class="board-card">
         <div class="board-card-number">02</div>
         <div class="board-card-title">Secretary</div>
         <div class="board-card-desc">Keeps our records straight, documents board decisions, and keeps TLN organized and accountable.</div>
+        <button class="board-apply-link" onclick="openBoardModal('modal-secretary')">Apply for this role
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </button>
       </div>
       <div class="board-card">
         <div class="board-card-number">03</div>
         <div class="board-card-title">Treasurer</div>
         <div class="board-card-desc">Oversees TLN's finances, tracks funding, and keeps us financially transparent and sustainable.</div>
+        <button class="board-apply-link" onclick="openBoardModal('modal-treasurer')">Apply for this role
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </button>
       </div>
       <div class="board-card">
         <div class="board-card-number">04</div>
         <div class="board-card-title">Director of Programs</div>
         <div class="board-card-desc">Leads AI Basics, Cyber Safety 101, and the Online Kindness Challenge. Owns what we teach and how we teach it.</div>
+        <button class="board-apply-link" onclick="openBoardModal('modal-programs')">Apply for this role
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </button>
       </div>
       <div class="board-card">
         <div class="board-card-number">05</div>
         <div class="board-card-title">Director of External Affairs</div>
         <div class="board-card-desc">Builds relationships with libraries, schools, and community partners. Grows who TLN reaches across Ontario.</div>
+        <button class="board-apply-link" onclick="openBoardModal('modal-external')">Apply for this role
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </button>
       </div>
       <div class="board-card">
         <div class="board-card-number">06</div>
         <div class="board-card-title">Director of Internal Affairs</div>
         <div class="board-card-desc">Keeps TLN running behind the scenes, coordinating our team and keeping everything moving.</div>
+        <button class="board-apply-link" onclick="openBoardModal('modal-internal')">Apply for this role
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </button>
       </div>
     </div>
   </div>
@@ -122,52 +156,310 @@
   </div>
 </section>
 
-<section>
-  <div class="board-apply-wrap">
-    <div class="section-label" style="text-align:center">Apply</div>
-    <h2 class="section-title" style="text-align:center">Apply for a board position</h2>
-    <p class="section-sub" style="text-align:center;margin:0 auto 36px">Tell us a bit about yourself and which role fits you best. We'll follow up within a week.</p>
-
-    <div class="contact-form-wrap">
-      <div class="form-title">Board application</div>
-      <div class="form-sub">All roles are volunteer-based to start. We're a small, fast-moving team.</div>
-      <form id="board-form" onsubmit="handleBoardFormSubmit(event)">
-        <input type="hidden" name="_subject" value="Board Application - Tech Literacy Network">
-        <div class="form-row">
-          <div class="form-group"><label for="b-fname">First name *</label><input type="text" id="b-fname" name="fname" placeholder="Your first name" required></div>
-          <div class="form-group"><label for="b-lname">Last name *</label><input type="text" id="b-lname" name="lname" placeholder="Your last name" required></div>
-        </div>
-        <div class="form-row">
-          <div class="form-group"><label for="b-email">Email address *</label><input type="email" id="b-email" name="email" placeholder="you@example.com" required></div>
-          <div class="form-group"><label for="b-phone">Phone number</label><input type="tel" id="b-phone" name="phone" placeholder="(647) 000-0000"></div>
-        </div>
-        <div class="form-group"><label for="b-position">Position you're interested in *</label>
-          <select id="b-position" name="position" required>
-            <option value="" disabled selected>Select a role</option>
-            <option>Vice Chair</option>
-            <option>Secretary</option>
-            <option>Treasurer</option>
-            <option>Director of Programs</option>
-            <option>Director of External Affairs</option>
-            <option>Director of Internal Affairs</option>
-            <option>Not sure - open to any role</option>
-          </select>
-        </div>
-        <div class="form-group"><label for="b-links">LinkedIn or portfolio link</label><input type="text" id="b-links" name="links" placeholder="Optional"></div>
-        <div class="form-group"><label for="b-message">Why do you want to join TLN's board? *</label><textarea id="b-message" name="message" placeholder="Tell us about your background and why this role interests you..." required></textarea></div>
-        <button type="submit" class="form-submit">Submit application
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-        </button>
-        <p class="form-note">We'll never share your details. This form sends directly to Gurnoor.</p>
-      </form>
-      <div class="form-success" id="board-form-success">
-        <div class="form-success-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <h3>Application received!</h3>
-        <p>Thank you for applying. Gurnoor will be in touch within a week to talk next steps.</p>
+<!-- ============ MODAL: VICE CHAIR ============ -->
+<div class="board-modal-overlay" id="modal-vicechair">
+  <div class="board-modal">
+    <button class="board-modal-close" onclick="closeBoardModal('modal-vicechair')" aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="board-modal-tag">Applying for</div>
+    <h3>Vice Chair</h3>
+    <p class="board-modal-desc">The Vice Chair backs up TLN's leadership and steps in wherever the org needs it most. This role suits someone comfortable wearing multiple hats.</p>
+    <form id="form-vicechair" onsubmit="handleModalFormSubmit(event, 'form-vicechair', 'success-vicechair')">
+      <input type="hidden" name="_subject" value="Board Application: Vice Chair - Tech Literacy Network">
+      <input type="hidden" name="position" value="Vice Chair">
+      <div class="form-row">
+        <div class="form-group"><label for="vc-fname">First name *</label><input type="text" id="vc-fname" name="fname" required></div>
+        <div class="form-group"><label for="vc-lname">Last name *</label><input type="text" id="vc-lname" name="lname" required></div>
       </div>
+      <div class="form-row">
+        <div class="form-group"><label for="vc-email">Email address *</label><input type="email" id="vc-email" name="email" required></div>
+        <div class="form-group"><label for="vc-phone">Phone number</label><input type="tel" id="vc-phone" name="phone"></div>
+      </div>
+      <div class="form-group"><label for="vc-hours">How many hours per week can you commit? *</label>
+        <select id="vc-hours" name="hours_per_week" required>
+          <option value="" disabled selected>Select range</option>
+          <option>1 to 3 hours</option>
+          <option>4 to 6 hours</option>
+          <option>7 to 10 hours</option>
+          <option>10+ hours</option>
+        </select>
+      </div>
+      <div class="form-group"><label for="vc-lead">What leadership or organizational experience do you have? *</label><textarea id="vc-lead" name="leadership_experience" placeholder="School clubs, teams, jobs, other volunteer roles..." required></textarea></div>
+      <div class="form-group"><label for="vc-excited">Vice Chair means stepping in wherever TLN needs help. What are you most excited to help with? *</label><textarea id="vc-excited" name="excited_about" required></textarea></div>
+      <div class="form-group"><label for="vc-links">LinkedIn or portfolio link</label><input type="text" id="vc-links" name="links" placeholder="Optional"></div>
+      <button type="submit" class="form-submit">Submit application
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+      </button>
+      <p class="form-note">We'll never share your details. This form sends directly to Gurnoor.</p>
+    </form>
+    <div class="form-success" id="success-vicechair">
+      <div class="form-success-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <h3>Application received!</h3>
+      <p>Thank you for applying for Vice Chair. Gurnoor will be in touch within a week.</p>
     </div>
   </div>
-</section>
+</div>
+
+<!-- ============ MODAL: SECRETARY ============ -->
+<div class="board-modal-overlay" id="modal-secretary">
+  <div class="board-modal">
+    <button class="board-modal-close" onclick="closeBoardModal('modal-secretary')" aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="board-modal-tag">Applying for</div>
+    <h3>Secretary</h3>
+    <p class="board-modal-desc">The Secretary keeps TLN organized, documenting board decisions and keeping our records straight. This role suits someone detail-oriented and reliable.</p>
+    <form id="form-secretary" onsubmit="handleModalFormSubmit(event, 'form-secretary', 'success-secretary')">
+      <input type="hidden" name="_subject" value="Board Application: Secretary - Tech Literacy Network">
+      <input type="hidden" name="position" value="Secretary">
+      <div class="form-row">
+        <div class="form-group"><label for="sec-fname">First name *</label><input type="text" id="sec-fname" name="fname" required></div>
+        <div class="form-group"><label for="sec-lname">Last name *</label><input type="text" id="sec-lname" name="lname" required></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label for="sec-email">Email address *</label><input type="email" id="sec-email" name="email" required></div>
+        <div class="form-group"><label for="sec-phone">Phone number</label><input type="tel" id="sec-phone" name="phone"></div>
+      </div>
+      <div class="form-group"><label for="sec-hours">How many hours per week can you commit? *</label>
+        <select id="sec-hours" name="hours_per_week" required>
+          <option value="" disabled selected>Select range</option>
+          <option>1 to 3 hours</option>
+          <option>4 to 6 hours</option>
+          <option>7 to 10 hours</option>
+          <option>10+ hours</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Which tools are you comfortable with?</label>
+        <div class="board-checkbox-group">
+          <label class="board-checkbox-row"><input type="checkbox" name="tools" value="Google Docs"> Google Docs</label>
+          <label class="board-checkbox-row"><input type="checkbox" name="tools" value="Notion"> Notion</label>
+          <label class="board-checkbox-row"><input type="checkbox" name="tools" value="Excel or Sheets"> Excel / Google Sheets</label>
+          <label class="board-checkbox-row"><input type="checkbox" name="tools" value="Other"> Other</label>
+        </div>
+      </div>
+      <div class="form-group"><label for="sec-exp">Have you kept meeting notes, records, or documentation before? Tell us about it. *</label><textarea id="sec-exp" name="documentation_experience" required></textarea></div>
+      <div class="form-group"><label for="sec-why">Why do you want to be TLN's Secretary? *</label><textarea id="sec-why" name="why_interested" required></textarea></div>
+      <button type="submit" class="form-submit">Submit application
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+      </button>
+      <p class="form-note">We'll never share your details. This form sends directly to Gurnoor.</p>
+    </form>
+    <div class="form-success" id="success-secretary">
+      <div class="form-success-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <h3>Application received!</h3>
+      <p>Thank you for applying for Secretary. Gurnoor will be in touch within a week.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODAL: TREASURER ============ -->
+<div class="board-modal-overlay" id="modal-treasurer">
+  <div class="board-modal">
+    <button class="board-modal-close" onclick="closeBoardModal('modal-treasurer')" aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="board-modal-tag">Applying for</div>
+    <h3>Treasurer</h3>
+    <p class="board-modal-desc">The Treasurer oversees TLN's finances and keeps us transparent and sustainable. This role suits someone comfortable with numbers and tracking.</p>
+    <form id="form-treasurer" onsubmit="handleModalFormSubmit(event, 'form-treasurer', 'success-treasurer')">
+      <input type="hidden" name="_subject" value="Board Application: Treasurer - Tech Literacy Network">
+      <input type="hidden" name="position" value="Treasurer">
+      <div class="form-row">
+        <div class="form-group"><label for="tr-fname">First name *</label><input type="text" id="tr-fname" name="fname" required></div>
+        <div class="form-group"><label for="tr-lname">Last name *</label><input type="text" id="tr-lname" name="lname" required></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label for="tr-email">Email address *</label><input type="email" id="tr-email" name="email" required></div>
+        <div class="form-group"><label for="tr-phone">Phone number</label><input type="tel" id="tr-phone" name="phone"></div>
+      </div>
+      <div class="form-group"><label for="tr-hours">How many hours per week can you commit? *</label>
+        <select id="tr-hours" name="hours_per_week" required>
+          <option value="" disabled selected>Select range</option>
+          <option>1 to 3 hours</option>
+          <option>4 to 6 hours</option>
+          <option>7 to 10 hours</option>
+          <option>10+ hours</option>
+        </select>
+      </div>
+      <div class="form-group"><label for="tr-comfort">Are you comfortable with spreadsheets and financial tracking tools? *</label>
+        <select id="tr-comfort" name="spreadsheet_comfort" required>
+          <option value="" disabled selected>Select one</option>
+          <option>Yes, very comfortable</option>
+          <option>Somewhat comfortable</option>
+          <option>Not yet, but willing to learn</option>
+        </select>
+      </div>
+      <div class="form-group"><label for="tr-exp">Do you have experience with budgeting, bookkeeping, or finance? Tell us about it. *</label><textarea id="tr-exp" name="finance_experience" placeholder="Coursework, part-time jobs, managing funds for a club or team..." required></textarea></div>
+      <div class="form-group"><label for="tr-why">Why do you want to be TLN's Treasurer? *</label><textarea id="tr-why" name="why_interested" required></textarea></div>
+      <button type="submit" class="form-submit">Submit application
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+      </button>
+      <p class="form-note">We'll never share your details. This form sends directly to Gurnoor.</p>
+    </form>
+    <div class="form-success" id="success-treasurer">
+      <div class="form-success-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <h3>Application received!</h3>
+      <p>Thank you for applying for Treasurer. Gurnoor will be in touch within a week.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODAL: DIRECTOR OF PROGRAMS ============ -->
+<div class="board-modal-overlay" id="modal-programs">
+  <div class="board-modal">
+    <button class="board-modal-close" onclick="closeBoardModal('modal-programs')" aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="board-modal-tag">Applying for</div>
+    <h3>Director of Programs</h3>
+    <p class="board-modal-desc">The Director of Programs leads AI Basics, Cyber Safety 101, and the Online Kindness Challenge. This role suits someone who loves teaching and building curriculum.</p>
+    <form id="form-programs" onsubmit="handleModalFormSubmit(event, 'form-programs', 'success-programs')">
+      <input type="hidden" name="_subject" value="Board Application: Director of Programs - Tech Literacy Network">
+      <input type="hidden" name="position" value="Director of Programs">
+      <div class="form-row">
+        <div class="form-group"><label for="pr-fname">First name *</label><input type="text" id="pr-fname" name="fname" required></div>
+        <div class="form-group"><label for="pr-lname">Last name *</label><input type="text" id="pr-lname" name="lname" required></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label for="pr-email">Email address *</label><input type="email" id="pr-email" name="email" required></div>
+        <div class="form-group"><label for="pr-phone">Phone number</label><input type="tel" id="pr-phone" name="phone"></div>
+      </div>
+      <div class="form-group"><label for="pr-hours">How many hours per week can you commit? *</label>
+        <select id="pr-hours" name="hours_per_week" required>
+          <option value="" disabled selected>Select range</option>
+          <option>1 to 3 hours</option>
+          <option>4 to 6 hours</option>
+          <option>7 to 10 hours</option>
+          <option>10+ hours</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Which program area interests you most?</label>
+        <div class="board-checkbox-group">
+          <label class="board-checkbox-row"><input type="checkbox" name="program_interest" value="AI Basics for Everyday Life"> AI Basics for Everyday Life</label>
+          <label class="board-checkbox-row"><input type="checkbox" name="program_interest" value="Cyber Safety 101"> Cyber Safety 101</label>
+          <label class="board-checkbox-row"><input type="checkbox" name="program_interest" value="Online Kindness Challenge"> Online Kindness Challenge</label>
+          <label class="board-checkbox-row"><input type="checkbox" name="program_interest" value="All three equally"> All three equally</label>
+        </div>
+      </div>
+      <div class="form-group"><label for="pr-exp">Do you have experience with curriculum design, teaching, or workshop facilitation? *</label><textarea id="pr-exp" name="teaching_experience" required></textarea></div>
+      <div class="form-group"><label for="pr-why">Why do you want to lead TLN's programs? *</label><textarea id="pr-why" name="why_interested" required></textarea></div>
+      <button type="submit" class="form-submit">Submit application
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+      </button>
+      <p class="form-note">We'll never share your details. This form sends directly to Gurnoor.</p>
+    </form>
+    <div class="form-success" id="success-programs">
+      <div class="form-success-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <h3>Application received!</h3>
+      <p>Thank you for applying for Director of Programs. Gurnoor will be in touch within a week.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODAL: DIRECTOR OF EXTERNAL AFFAIRS ============ -->
+<div class="board-modal-overlay" id="modal-external">
+  <div class="board-modal">
+    <button class="board-modal-close" onclick="closeBoardModal('modal-external')" aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="board-modal-tag">Applying for</div>
+    <h3>Director of External Affairs</h3>
+    <p class="board-modal-desc">The Director of External Affairs builds relationships with libraries, schools, and community partners. This role suits someone outgoing who isn't afraid of cold outreach.</p>
+    <form id="form-external" onsubmit="handleModalFormSubmit(event, 'form-external', 'success-external')">
+      <input type="hidden" name="_subject" value="Board Application: Director of External Affairs - Tech Literacy Network">
+      <input type="hidden" name="position" value="Director of External Affairs">
+      <div class="form-row">
+        <div class="form-group"><label for="ext-fname">First name *</label><input type="text" id="ext-fname" name="fname" required></div>
+        <div class="form-group"><label for="ext-lname">Last name *</label><input type="text" id="ext-lname" name="lname" required></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label for="ext-email">Email address *</label><input type="email" id="ext-email" name="email" required></div>
+        <div class="form-group"><label for="ext-phone">Phone number</label><input type="tel" id="ext-phone" name="phone"></div>
+      </div>
+      <div class="form-group"><label for="ext-hours">How many hours per week can you commit? *</label>
+        <select id="ext-hours" name="hours_per_week" required>
+          <option value="" disabled selected>Select range</option>
+          <option>1 to 3 hours</option>
+          <option>4 to 6 hours</option>
+          <option>7 to 10 hours</option>
+          <option>10+ hours</option>
+        </select>
+      </div>
+      <div class="form-group"><label for="ext-cold">Are you comfortable with cold outreach, emails, calls, in-person asks? *</label>
+        <select id="ext-cold" name="cold_outreach_comfort" required>
+          <option value="" disabled selected>Select one</option>
+          <option>Yes, very comfortable</option>
+          <option>Somewhat comfortable</option>
+          <option>Not yet, but willing to learn</option>
+        </select>
+      </div>
+      <div class="form-group"><label for="ext-connections">Do you have existing connections with schools, libraries, or community orgs in Ontario?</label><textarea id="ext-connections" name="existing_connections" placeholder="Optional, list any you have"></textarea></div>
+      <div class="form-group"><label for="ext-why">Why do you want to lead TLN's outreach? *</label><textarea id="ext-why" name="why_interested" required></textarea></div>
+      <button type="submit" class="form-submit">Submit application
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+      </button>
+      <p class="form-note">We'll never share your details. This form sends directly to Gurnoor.</p>
+    </form>
+    <div class="form-success" id="success-external">
+      <div class="form-success-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <h3>Application received!</h3>
+      <p>Thank you for applying for Director of External Affairs. Gurnoor will be in touch within a week.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODAL: DIRECTOR OF INTERNAL AFFAIRS ============ -->
+<div class="board-modal-overlay" id="modal-internal">
+  <div class="board-modal">
+    <button class="board-modal-close" onclick="closeBoardModal('modal-internal')" aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="board-modal-tag">Applying for</div>
+    <h3>Director of Internal Affairs</h3>
+    <p class="board-modal-desc">The Director of Internal Affairs keeps TLN running behind the scenes, coordinating the team. This role suits someone organized who likes keeping things moving.</p>
+    <form id="form-internal" onsubmit="handleModalFormSubmit(event, 'form-internal', 'success-internal')">
+      <input type="hidden" name="_subject" value="Board Application: Director of Internal Affairs - Tech Literacy Network">
+      <input type="hidden" name="position" value="Director of Internal Affairs">
+      <div class="form-row">
+        <div class="form-group"><label for="int-fname">First name *</label><input type="text" id="int-fname" name="fname" required></div>
+        <div class="form-group"><label for="int-lname">Last name *</label><input type="text" id="int-lname" name="lname" required></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label for="int-email">Email address *</label><input type="email" id="int-email" name="email" required></div>
+        <div class="form-group"><label for="int-phone">Phone number</label><input type="tel" id="int-phone" name="phone"></div>
+      </div>
+      <div class="form-group"><label for="int-hours">How many hours per week can you commit? *</label>
+        <select id="int-hours" name="hours_per_week" required>
+          <option value="" disabled selected>Select range</option>
+          <option>1 to 3 hours</option>
+          <option>4 to 6 hours</option>
+          <option>7 to 10 hours</option>
+          <option>10+ hours</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Which tools are you comfortable with?</label>
+        <div class="board-checkbox-group">
+          <label class="board-checkbox-row"><input type="checkbox" name="tools" value="Slack"> Slack</label>
+          <label class="board-checkbox-row"><input type="checkbox" name="tools" value="Notion"> Notion</label>
+          <label class="board-checkbox-row"><input type="checkbox" name="tools" value="Trello or Asana"> Trello / Asana</label>
+          <label class="board-checkbox-row"><input type="checkbox" name="tools" value="Google Workspace"> Google Workspace</label>
+        </div>
+      </div>
+      <div class="form-group"><label for="int-exp">Do you have experience coordinating teams, projects, or events? *</label><textarea id="int-exp" name="coordination_experience" required></textarea></div>
+      <div class="form-group"><label for="int-why">Why do you want to keep TLN running behind the scenes? *</label><textarea id="int-why" name="why_interested" required></textarea></div>
+      <button type="submit" class="form-submit">Submit application
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+      </button>
+      <p class="form-note">We'll never share your details. This form sends directly to Gurnoor.</p>
+    </form>
+    <div class="form-success" id="success-internal">
+      <div class="form-success-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00C2A8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <h3>Application received!</h3>
+      <p>Thank you for applying for Director of Internal Affairs. Gurnoor will be in touch within a week.</p>
+    </div>
+  </div>
+</div>
 
 <footer>
   <div class="footer-inner">
@@ -223,6 +515,14 @@
 <script>
   document.getElementById('nav-toggle').addEventListener('click', function() {
     document.getElementById('nav-links').classList.toggle('open');
+  });
+  document.querySelectorAll('.board-modal-overlay').forEach(function(overlay) {
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) {
+        overlay.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
   });
 </script>
 </body>
