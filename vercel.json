@@ -5,6 +5,7 @@
     { "source": "/blog",     "destination": "/blog.html"     },
     { "source": "/gallery",  "destination": "/gallery.html"  },
     { "source": "/contact",  "destination": "/contact.html"  },
-    { "source": "/privacy",  "destination": "/privacy.html"  }
+    { "source": "/privacy",  "destination": "/privacy.html"  },
+    { "source": "/getinvolved",  "destination": "/getinvolved.html"  }
   ]
 }
