@@ -222,6 +222,10 @@ section { padding: 96px 5%; }
 .board-apply-link { margin-top: 18px; font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 700; color: var(--teal-dim); background: none; border: none; padding: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; transition: gap 0.2s, color 0.2s; }
 .board-apply-link:hover { color: var(--teal); gap: 8px; }
 .board-apply-wrap { max-width: 640px; margin: 0 auto; }
+.role-jump-row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 32px auto 0; max-width: 900px; }
+.role-jump-pill { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; color: var(--teal-dim); background: var(--aqua); border: 1px solid rgba(0,194,168,0.25); border-radius: 100px; padding: 9px 18px; text-decoration: none; transition: background 0.2s, color 0.2s; scroll-margin-top: 90px; }
+.role-jump-pill:hover { background: var(--teal); color: var(--navy); }
+.role-section-anchor { scroll-margin-top: 90px; }
 
 /* BOARD APPLICATION MODALS */
 .board-modal-overlay { position: fixed; inset: 0; background: rgba(13,43,69,0.75); backdrop-filter: blur(4px); display: none; z-index: 999; overflow-y: auto; padding: 48px 20px; }
