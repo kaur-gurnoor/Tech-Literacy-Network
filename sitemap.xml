@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://techliteracynetwork.vercel.app/</loc>
+    <loc>https://techliteracynetwork.com/</loc>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://techliteracynetwork.vercel.app/about</loc>
+    <loc>https://techliteracynetwork.com/about</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://techliteracynetwork.vercel.app/programs</loc>
+    <loc>https://techliteracynetwork.com/programs</loc>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://techliteracynetwork.vercel.app/getinvolved</loc>
+    <loc>https://techliteracynetwork.com/getinvolved</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://techliteracynetwork.vercel.app/blog</loc>
+    <loc>https://techliteracynetwork.com/blog</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://techliteracynetwork.vercel.app/gallery</loc>
+    <loc>https://techliteracynetwork.com/gallery</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://techliteracynetwork.vercel.app/contact</loc>
+    <loc>https://techliteracynetwork.com/contact</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://techliteracynetwork.vercel.app/privacy</loc>
+    <loc>https://techliteracynetwork.com/privacy</loc>
     <priority>0.3</priority>
   </url>
 </urlset>
