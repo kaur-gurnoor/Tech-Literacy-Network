@@ -28,7 +28,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); backgrou
 .nav-brand-text { font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600; color: #FAF8F2; letter-spacing: 0.01em; line-height: 1.1; }
 .nav-brand-text span { display: block; font-size: 10px; font-weight: 400; color: var(--teal); letter-spacing: 0.08em; text-transform: uppercase; }
 .nav-links { display: flex; align-items: center; gap: 0; list-style: none; margin-left: auto; }
-.nav-links a { display: block; padding: 8px 16px; color: rgba(36,75,74,0.7); text-decoration: none; font-size: 13.5px; font-weight: 500; letter-spacing: 0.01em; transition: color 0.2s; border-radius: 6px; }
+.nav-links a { display: block; padding: 8px 16px; color: #FAF8F2; text-decoration: none; font-size: 13.5px; font-weight: 500; letter-spacing: 0.01em; transition: color 0.2s; border-radius: 6px; }
 .nav-links a:hover { color: #F2C96D; }
 .nav-links a.active { color: #F2C96D; }
 .nav-cta { margin-left: 8px; padding: 8px 20px !important; background: #FAF8F2 !important; color: var(--navy) !important; border-radius: 8px !important; font-weight: 600 !important; font-size: 13px !important; transition: background 0.2s, transform 0.15s !important; }
