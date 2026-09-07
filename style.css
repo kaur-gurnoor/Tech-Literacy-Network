@@ -54,7 +54,7 @@ section { padding: 96px 5%; }
 .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
 /* BUTTONS */
-.btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--teal); color: var(--navy); font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 14px; padding: 14px 28px; border-radius: 10px; text-decoration: none; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; letter-spacing: 0.01em; }
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--teal); color: #FAF8F2; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 14px; padding: 14px 28px; border-radius: 10px; text-decoration: none; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; letter-spacing: 0.01em; }
 .btn-primary:hover { background: #CC5A4F; transform: translateY(-2px); }
 .btn-ghost { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--navy); font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 14px; padding: 13px 24px; border-radius: 10px; text-decoration: none; border: 1px solid var(--border-strong); cursor: pointer; transition: border-color 0.2s, color 0.2s; }
 .btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
