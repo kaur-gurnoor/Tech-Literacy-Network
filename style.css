@@ -66,7 +66,7 @@ section { padding: 96px 5%; }
 .hero-card-title { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; color: var(--teal); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 20px; }
 .hero-stat-row { display: flex; flex-direction: column; gap: 16px; }
 .hero-stat { display: flex; align-items: center; gap: 16px; padding: 14px 16px; background: rgba(232,102,90,0.06); border: 1px solid rgba(232,102,90,0.12); border-radius: 12px; }
-.hero-stat-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(232,102,90,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.hero-stat-icon { width: 40px; height: 40px; border-radius: 10px; background: #E8665A; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .hero-stat-label { font-size: 13px; color: var(--text-light); margin-bottom: 2px; }
 .hero-stat-value { font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600; color: var(--navy); }
 
