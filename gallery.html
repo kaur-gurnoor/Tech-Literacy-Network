@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gallery - Tech Literacy Network</title>
-<meta name="description" content="Watch Tech Literacy Network's free Cyber Safety 101 workshop recordings. Four sessions covering phishing, passwords, privacy settings, and AI voice cloning scams.">
+<meta name="description" content="Watch all four Cyber Smart Kids workshop recordings from Tech Literacy Network. A free 30 minute online safety series for kids in grades 4 to 8.">
 <link rel="canonical" href="https://techliteracynetwork.com/gallery">
 <meta property="og:title" content="Gallery | Tech Literacy Network">
-<meta property="og:description" content="Watch our free Cyber Safety 101 workshop recordings. Four sessions on phishing, passwords, privacy settings, and AI scams.">
+<meta property="og:description" content="Watch our free Cyber Smart Kids series. Four 30 minute sessions on passwords, online dangers, kindness, and cyber leadership for grades 4 to 8.">
 <meta property="og:url" content="https://techliteracynetwork.com/gallery">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://techliteracynetwork.com/logo.png">
@@ -26,14 +26,14 @@
 
 <style>
 /* ============================================================
-   GALLERY PAGE - workshop recordings
+   GALLERY PAGE - Cyber Smart Kids recordings
    Brand: navy #0D2B45 / teal #00C2A8 / cool white #F7F9FC / aqua #E0FAF7
    ============================================================ */
 
 .gal-hero-logo { width: 64px; height: 64px; border-radius: 12px; display: block; margin-bottom: 26px; }
 
 .vid-section { background: var(--cool-white); border-top: 1px solid var(--border); }
-.vid-head { max-width: 620px; margin-bottom: 48px; }
+.vid-head { max-width: 640px; margin-bottom: 48px; }
 .vid-head-tag { display: inline-block; background: var(--aqua); border: 1px solid rgba(0,194,168,0.3); color: var(--teal-dim); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 14px; border-radius: 100px; margin-bottom: 18px; }
 .vid-head h2 { font-size: clamp(26px, 3.2vw, 40px); font-weight: 700; color: var(--navy); letter-spacing: -0.02em; margin-bottom: 14px; }
 .vid-head p { font-size: 16.5px; color: var(--text-secondary); line-height: 1.7; }
@@ -51,6 +51,7 @@
 .vid-frame.is-playing::after,
 .vid-frame.is-playing .vid-play,
 .vid-frame.is-playing .vid-num,
+.vid-frame.is-playing .vid-len,
 .vid-frame.is-playing .vid-grid-bg,
 .vid-frame.is-playing .vid-soon { display: none; }
 
@@ -59,6 +60,7 @@
 .vid-play svg { margin-left: 3px; }
 
 .vid-num { position: absolute; top: 14px; left: 14px; z-index: 3; font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); background: rgba(13,43,69,0.72); border: 1px solid rgba(0,194,168,0.3); padding: 5px 12px; border-radius: 100px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.vid-len { position: absolute; bottom: 14px; right: 14px; z-index: 3; font-size: 11.5px; font-weight: 600; color: rgba(255,255,255,0.85); background: rgba(13,43,69,0.78); padding: 4px 9px; border-radius: 6px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
 
 /* state before a video ID is pasted in */
 .vid-grid-bg { position: absolute; inset: 0; z-index: 1; background-image: linear-gradient(rgba(0,194,168,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(0,194,168,0.07) 1px, transparent 1px); background-size: 34px 34px; pointer-events: none; opacity: 0; }
@@ -70,11 +72,12 @@
 
 /* card body */
 .vid-body { padding: 24px 24px 26px; display: flex; flex-direction: column; flex: 1; }
+.vid-date { display: flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--teal-dim); margin-bottom: 10px; }
 .vid-title { font-family: 'Space Grotesk', sans-serif; font-size: 19px; font-weight: 700; color: var(--navy); letter-spacing: -0.01em; margin-bottom: 10px; }
 .vid-desc { font-size: 14.5px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 18px; flex: 1; }
 .vid-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 16px; }
 .vid-tag { font-size: 11.5px; font-weight: 600; color: var(--teal-dim); background: var(--aqua); border-radius: 6px; padding: 4px 10px; }
-.vid-meta { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--text-light); border-top: 1px solid var(--border); padding-top: 14px; }
+.vid-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 12.5px; color: var(--text-light); border-top: 1px solid var(--border); padding-top: 14px; }
 .vid-meta svg { flex-shrink: 0; }
 .vid-meta span { color: rgba(13,43,69,0.22); }
 
@@ -122,7 +125,7 @@
     <img src="/logo.png" alt="Tech Literacy Network logo" class="gal-hero-logo">
     <div class="page-hero-tag">Gallery</div>
     <h1 class="page-hero-title">Workshops in action.</h1>
-    <p class="page-hero-sub">Every Cyber Safety 101 session we run gets recorded and posted here, so anyone who missed the live workshop can still watch it for free.</p>
+    <p class="page-hero-sub">We ran our Cyber Smart Kids series live on Zoom over four weekend sessions. Every one was recorded, so any kid who missed a week can still catch up for free.</p>
   </div>
 </div>
 
@@ -132,108 +135,128 @@
 
     <div class="vid-head">
       <div class="vid-head-tag">Recordings</div>
-      <h2>Cyber Safety 101, session by session</h2>
-      <p>Four recorded workshops covering everything we teach in person. Watch them in any order, share them with family, or use them with your own group.</p>
+      <h2>Cyber Smart Kids, session by session</h2>
+      <p>Four 30 minute sessions for kids in grades 4 to 8, recorded over the last two weekends of August and the first of September 2026. Watch them in order or jump to the one you need. Free for families, classrooms, and libraries to use.</p>
     </div>
 
     <div class="vid-grid">
 
       <!-- ---------- SESSION 1 ---------- -->
       <article class="vid-card">
-        <div class="vid-frame" data-yt="VIDEO_ID_1" data-title="Session 1: Spotting Phishing and Scam Messages">
+        <div class="vid-frame" data-yt="vkItUl1gsCc" data-title="Session 1: Building Your Digital Shield">
           <div class="vid-grid-bg"></div>
           <div class="vid-num">Session 01</div>
-          <button class="vid-play" aria-label="Play Session 1: Spotting Phishing and Scam Messages">
+          <div class="vid-len">30 min</div>
+          <button class="vid-play" aria-label="Play Session 1: Building Your Digital Shield">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="#0D2B45"><path d="M8 5v14l11-7z"/></svg>
           </button>
           <div class="vid-soon">Recording coming soon</div>
         </div>
         <div class="vid-body">
-          <h3 class="vid-title">Spotting Phishing and Scam Messages</h3>
-          <p class="vid-desc">How to read a suspicious email or text before you click anything. We go through real phishing attempts line by line, point out the small details that give them away, and cover what to do when you are still not sure.</p>
+          <div class="vid-date">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Saturday, August 29
+          </div>
+          <h3 class="vid-title">Building Your Digital Shield</h3>
+          <p class="vid-desc">What to keep private online and how to lock an account down. Kids build a strong password they can actually remember, learn why details like a birthday or school name matter, and set up the habits that keep their accounts theirs.</p>
           <div class="vid-tags">
-            <span class="vid-tag">Phishing</span>
-            <span class="vid-tag">Fake links</span>
-            <span class="vid-tag">Sender checks</span>
+            <span class="vid-tag">Passwords</span>
+            <span class="vid-tag">Privacy settings</span>
+            <span class="vid-tag">Personal info</span>
           </div>
           <div class="vid-meta">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            60 min <span>&middot;</span> Seniors and adults <span>&middot;</span> Free
+            30 min <span>&middot;</span> Grades 4 to 8 <span>&middot;</span> Free
           </div>
         </div>
       </article>
 
       <!-- ---------- SESSION 2 ---------- -->
       <article class="vid-card">
-        <div class="vid-frame" data-yt="VIDEO_ID_2" data-title="Session 2: Passwords and Account Security">
+        <div class="vid-frame" data-yt="g_dQ-wvJrc4" data-title="Session 2: Detecting Online Dangers">
           <div class="vid-grid-bg"></div>
           <div class="vid-num">Session 02</div>
-          <button class="vid-play" aria-label="Play Session 2: Passwords and Account Security">
+          <div class="vid-len">30 min</div>
+          <button class="vid-play" aria-label="Play Session 2: Detecting Online Dangers">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="#0D2B45"><path d="M8 5v14l11-7z"/></svg>
           </button>
           <div class="vid-soon">Recording coming soon</div>
         </div>
         <div class="vid-body">
-          <h3 class="vid-title">Passwords and Account Security</h3>
-          <p class="vid-desc">Building passwords you can actually remember, why reusing one password across accounts puts all of them at risk, and a step by step setup of two-factor authentication on a phone.</p>
+          <div class="vid-date">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Sunday, August 30
+          </div>
+          <h3 class="vid-title">Detecting Online Dangers</h3>
+          <p class="vid-desc">Fake giveaways, free game currency, suspicious links, and messages from people pretending to be someone they are not. We walk through real examples together and practise deciding what is safe to click and when to go get an adult.</p>
           <div class="vid-tags">
-            <span class="vid-tag">Passwords</span>
-            <span class="vid-tag">Two-factor</span>
-            <span class="vid-tag">Password managers</span>
+            <span class="vid-tag">Scams</span>
+            <span class="vid-tag">Fake links</span>
+            <span class="vid-tag">Strangers online</span>
           </div>
           <div class="vid-meta">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            60 min <span>&middot;</span> Seniors and adults <span>&middot;</span> Free
+            30 min <span>&middot;</span> Grades 4 to 8 <span>&middot;</span> Free
           </div>
         </div>
       </article>
 
       <!-- ---------- SESSION 3 ---------- -->
       <article class="vid-card">
-        <div class="vid-frame" data-yt="VIDEO_ID_3" data-title="Session 3: Privacy Settings and Safer Devices">
+        <div class="vid-frame" data-yt="2-BVxM50Dko" data-title="Session 3: Kindness Online">
           <div class="vid-grid-bg"></div>
           <div class="vid-num">Session 03</div>
-          <button class="vid-play" aria-label="Play Session 3: Privacy Settings and Safer Devices">
+          <div class="vid-len">30 min</div>
+          <button class="vid-play" aria-label="Play Session 3: Kindness Online">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="#0D2B45"><path d="M8 5v14l11-7z"/></svg>
           </button>
           <div class="vid-soon">Recording coming soon</div>
         </div>
         <div class="vid-body">
-          <h3 class="vid-title">Privacy Settings and Safer Devices</h3>
-          <p class="vid-desc">A live walkthrough of the settings that matter most on a phone, laptop, and browser. We cover app permissions, location sharing, automatic updates, and what to turn off first.</p>
+          <div class="vid-date">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Saturday, September 5
+          </div>
+          <h3 class="vid-title">Kindness Online</h3>
+          <p class="vid-desc">What to do when a group chat turns mean. Kids talk through how screenshots and comments follow people around long after a joke stops being funny, and practise simple ways to step in for a friend instead of scrolling past.</p>
           <div class="vid-tags">
-            <span class="vid-tag">App permissions</span>
-            <span class="vid-tag">Location</span>
-            <span class="vid-tag">Updates</span>
+            <span class="vid-tag">Cyberbullying</span>
+            <span class="vid-tag">Group chats</span>
+            <span class="vid-tag">Speaking up</span>
           </div>
           <div class="vid-meta">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            60 min <span>&middot;</span> All ages <span>&middot;</span> Free
+            30 min <span>&middot;</span> Grades 4 to 8 <span>&middot;</span> Free
           </div>
         </div>
       </article>
 
       <!-- ---------- SESSION 4 ---------- -->
       <article class="vid-card">
-        <div class="vid-frame" data-yt="VIDEO_ID_4" data-title="Session 4: AI Scams and Voice Cloning">
+        <div class="vid-frame" data-yt="hpXQivpRH0M" data-title="Session 4: Becoming Cyber Smart Leaders">
           <div class="vid-grid-bg"></div>
           <div class="vid-num">Session 04</div>
-          <button class="vid-play" aria-label="Play Session 4: AI Scams and Voice Cloning">
+          <div class="vid-len">30 min</div>
+          <button class="vid-play" aria-label="Play Session 4: Becoming Cyber Smart Leaders">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="#0D2B45"><path d="M8 5v14l11-7z"/></svg>
           </button>
           <div class="vid-soon">Recording coming soon</div>
         </div>
         <div class="vid-body">
-          <h3 class="vid-title">AI Scams and Voice Cloning</h3>
-          <p class="vid-desc">Scammers can copy a familiar voice from a few seconds of audio pulled off social media. We show how these calls work, play a real example, and set up a family codeword system that stops them cold.</p>
+          <div class="vid-date">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Sunday, September 6
+          </div>
+          <h3 class="vid-title">Becoming Cyber Smart Leaders</h3>
+          <p class="vid-desc">The wrap up session, where everything from the first three weekends turns into something kids can teach. They practise explaining online safety to a parent or younger sibling and leave with a checklist to walk their whole family through.</p>
           <div class="vid-tags">
-            <span class="vid-tag">Voice cloning</span>
-            <span class="vid-tag">Deepfakes</span>
-            <span class="vid-tag">Family codeword</span>
+            <span class="vid-tag">Teaching others</span>
+            <span class="vid-tag">Family checklist</span>
+            <span class="vid-tag">Everyday habits</span>
           </div>
           <div class="vid-meta">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            60 min <span>&middot;</span> Families <span>&middot;</span> Free
+            30 min <span>&middot;</span> Grades 4 to 8 <span>&middot;</span> Free
           </div>
         </div>
       </article>
@@ -244,7 +267,7 @@
 
 <!--
   ===================== PHOTO GRID =====================
-  Uncomment this whole block once you have real workshop photos.
+  Uncomment this whole block once you have real workshop photos or screenshots.
   Replace each .gallery-placeholder div with:
   <img src="/photos/your-photo.jpg" alt="Description" style="width:100%;height:100%;object-fit:cover">
 
@@ -253,7 +276,7 @@
     <div class="vid-head">
       <div class="vid-head-tag" style="background:transparent;border-color:var(--border-strong);color:var(--text-secondary)">Photos</div>
       <h2>From our sessions</h2>
-      <p>Moments from workshops we have run with libraries, community centres, and schools across Ontario.</p>
+      <p>Moments from Cyber Smart Kids and the other workshops we run with libraries, community centres, and schools across Ontario.</p>
     </div>
     <div class="gallery-grid">
       <div class="gallery-item">
@@ -262,7 +285,7 @@
           <div class="gallery-placeholder-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(0,194,168,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
           <span>Add photo</span>
         </div>
-        <div class="gallery-caption">Cyber Safety 101</div>
+        <div class="gallery-caption">Cyber Smart Kids</div>
       </div>
       <div class="gallery-item">
         <div class="hero-grid-bg"></div>
@@ -270,7 +293,7 @@
           <div class="gallery-placeholder-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(0,194,168,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
           <span>Add photo</span>
         </div>
-        <div class="gallery-caption">Workshop setup</div>
+        <div class="gallery-caption">Cyber Safety 101</div>
       </div>
       <div class="gallery-item">
         <div class="hero-grid-bg"></div>
@@ -290,8 +313,8 @@
   <div class="hero-grid-bg"></div>
   <div class="hero-glow"></div>
   <div class="gal-cta-inner">
-    <h2>Want a live session for your group?</h2>
-    <p>We run these workshops in person and over Zoom for libraries, community centres, schools, and seniors organizations across Ontario. Always free.</p>
+    <h2>Want to run this series with your group?</h2>
+    <p>We deliver Cyber Smart Kids live on Zoom for schools, libraries, and community groups across Ontario. Four weekend sessions, 30 minutes each, always free.</p>
     <a href="/contact" class="btn-primary">Request a workshop
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
     </a>
