@@ -170,10 +170,28 @@
   <ul class="nav-links" id="nav-links">
     <li><a href="/" class="active">Home</a></li>
     <li><a href="/programs">Programs</a></li>
-    <li><a href="/about">About</a></li>
-    <li><a href="/getinvolved">Get Involved</a></li>
+    <li class="nav-item-drop" id="nav-about">
+      <button class="nav-drop-toggle" id="nav-about-toggle" aria-expanded="false" aria-controls="nav-about-menu">About
+        <svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <ul class="nav-drop" id="nav-about-menu">
+        <li><a href="/about">
+          <span class="nav-drop-label">About Us</span>
+          <span class="nav-drop-sub">Why we started and what we stand for</span>
+        </a></li>
+        <li><a href="/team">
+          <span class="nav-drop-label">Meet the Team</span>
+          <span class="nav-drop-sub">The board running Tech Literacy Network</span>
+        </a></li>
+        <li><a href="/getinvolved">
+          <span class="nav-drop-label">Get Involved</span>
+          <span class="nav-drop-sub">Open roles, chapters, and volunteering</span>
+        </a></li>
+      </ul>
+    </li>
+    <li><a href="/resources">Resources</a></li>
+    <li><a href="/blog">Blog</a></li>
     <li><a href="/gallery">Gallery</a></li>
-    <li><a href="/contact" class="nav-cta">Request a Workshop</a></li>
   </ul>
   <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
     <span></span><span></span><span></span>
@@ -362,6 +380,8 @@
           <li><a href="/">Home</a></li>
           <li><a href="/programs">Programs</a></li>
           <li><a href="/about">About</a></li>
+          <li><a href="/team">Meet the Team</a></li>
+          <li><a href="/resources">Resources</a></li>
           <li><a href="/blog">Blog</a></li>
           <li><a href="/gallery">Gallery</a></li>
         </ul>
@@ -392,10 +412,6 @@
     </div>
   </div>
 </footer>
-<script>
-  document.getElementById('nav-toggle').addEventListener('click', function() {
-    document.getElementById('nav-links').classList.toggle('open');
-  });
-</script>
+<script src="/nav.js"></script>
 </body>
 </html>
