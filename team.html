@@ -64,7 +64,7 @@
 <div class="prog-page-hero">
   <div class="hero-grid-bg"></div>
   <div class="hero-glow"></div>
-  <div class="prog-page-inner" style="position:relative;z-index:1">
+  <div class="prog-page-inner is-centered" style="position:relative;z-index:1">
     <img src="/logo.png" alt="Tech Literacy Network logo" style="width:64px;height:64px;border-radius:12px;display:block;margin-bottom:26px">
     <div class="page-hero-tag">Team</div>
     <h1 class="page-hero-title">Meet the team.</h1>
@@ -74,77 +74,37 @@
 
 <section>
   <div class="section-inner">
-    <div style="max-width:620px;margin-bottom:44px">
-      <div class="vid-head-tag" style="display:inline-block;background:var(--aqua);border:1px solid rgba(0,194,168,0.3);color:var(--teal-dim);font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:18px">Board</div>
-      <h2 style="font-size:clamp(26px,3.2vw,40px);font-weight:700;color:var(--navy);letter-spacing:-0.02em;margin-bottom:14px">The people behind the workshops</h2>
-      <p style="font-size:16.5px;color:var(--text-secondary);line-height:1.7">Tech Literacy Network is run entirely by students and volunteers. Everyone here has another full schedule, and the programs happen because they make time for them anyway.</p>
-    </div>
-
+    <h2 class="team-heading">Board</h2>
     <div class="team-grid">
         <div class="team-card">
-          <div class="team-avatar">GK</div>
+          <div class="team-avatar" data-initials="GK"><img src="/team/gurnoor.jpg" alt="Gurnoor Kaur" width="108" height="108" loading="lazy" onerror="this.remove()"></div>
           <div class="team-name">Gurnoor Kaur</div>
           <div class="team-role">Founder and Executive Director</div>
-          <p class="team-bio">Started Tech Literacy Network after watching how much of everyday life moved online without anyone stopping to teach the people it left behind. Leads programming, partnerships, and curriculum.</p>
         </div>
         <div class="team-card">
-          <div class="team-avatar">ST</div>
+          <div class="team-avatar" data-initials="ST"><img src="/team/siqi.jpg" alt="Siqi Tan" width="108" height="108" loading="lazy" onerror="this.remove()"></div>
           <div class="team-name">Siqi Tan</div>
           <div class="team-role">Vice Chair</div>
-          <p class="team-bio">Supports the executive team across planning and operations, and helps keep programs on track from one term to the next.</p>
         </div>
         <div class="team-card">
-          <div class="team-avatar">BY</div>
+          <div class="team-avatar" data-initials="BY"><img src="/team/bereket.jpg" alt="Bereket Yohannes" width="108" height="108" loading="lazy" onerror="this.remove()"></div>
           <div class="team-name">Bereket Yohannes</div>
           <div class="team-role">Director of External Affairs</div>
-          <p class="team-bio">Runs marketing and university outreach, and builds the posters and campaign material behind every workshop series we announce.</p>
         </div>
         <div class="team-card">
-          <div class="team-avatar">AU</div>
-          <div class="team-name">Atomrimam Umar</div>
-          <div class="team-role">Director of Global Outreach</div>
-          <p class="team-bio">Based in Nigeria, working on community channels and international chapters so the curriculum reaches groups well outside Ontario.</p>
-        </div>
-        <div class="team-card">
-          <div class="team-avatar">D</div>
-          <div class="team-name">Daksh</div>
+          <div class="team-avatar" data-initials="DR"><img src="/team/daksh.jpg" alt="Daksh Rana" width="108" height="108" loading="lazy" onerror="this.remove()"></div>
+          <div class="team-name">Daksh Rana</div>
           <div class="team-role">Secretary</div>
-          <p class="team-bio">Keeps meeting notes and records, and handles the first round of outreach calls to organizations interested in hosting a session.</p>
         </div>
         <div class="team-card">
-          <div class="team-avatar">M</div>
-          <div class="team-name">Manvitha</div>
-          <div class="team-role">Sponsorship Outreach</div>
-          <p class="team-bio">Works on sponsor and funder conversations that keep every workshop free for the communities we run them in.</p>
+          <div class="team-avatar" data-initials="MD"><img src="/team/manvitha.jpg" alt="Manvitha Divi" width="108" height="108" loading="lazy" onerror="this.remove()"></div>
+          <div class="team-name">Manvitha Divi</div>
+          <div class="team-role">Treasurer</div>
         </div>
-
-<!-- ==========================================================
-     VERIFY BEFORE PUBLISHING
-     Your Get Involved page currently lists Director of Programs and
-     Director of Internal Affairs as OPEN roles, which conflicts with
-     the two cards below. If these people are still in post, uncomment
-     the cards and remove those roles from getinvolved.html.
-     If the roles really are vacant, delete this block.
-
-        <div class="team-card">
-          <div class="team-avatar">YA</div>
-          <div class="team-name">Yogita Adari</div>
-          <div class="team-role">Director of Programs</div>
-          <p class="team-bio">Leads curriculum and session delivery across AI Basics, Cyber Safety 101, and Cyber Smart Kids.</p>
-        </div>
-        <div class="team-card">
-          <div class="team-avatar">AP</div>
-          <div class="team-name">Ashutosh Pola</div>
-          <div class="team-role">Director of Internal Affairs</div>
-          <p class="team-bio">Keeps internal operations, scheduling, and finances running behind the scenes.</p>
-        </div>
-     ========================================================== -->
-
         <div class="team-card is-open-role">
-          <div class="team-avatar">+</div>
+          <div class="team-avatar" data-initials="+"></div>
           <div class="team-name">This could be you</div>
           <div class="team-role">Open roles</div>
-          <p class="team-bio">We have board seats and chapter leader positions open right now. No prior nonprofit experience needed, just time and follow through.</p>
           <a href="/getinvolved" class="team-open-link">See open roles
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
           </a>
