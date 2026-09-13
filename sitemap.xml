@@ -32,4 +32,12 @@
     <loc>https://techliteracynetwork.com/privacy</loc>
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://techliteracynetwork.com/team</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://techliteracynetwork.com/resources</loc>
+    <priority>0.7</priority>
+  </url>
 </urlset>
