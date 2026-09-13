@@ -1,10 +1,16 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gallery - Tech Literacy Network</title>
+<meta name="description" content="Watch Tech Literacy Network's free Cyber Safety 101 workshop recordings. Four sessions covering phishing, passwords, privacy settings, and AI voice cloning scams.">
+<link rel="canonical" href="https://techliteracynetwork.com/gallery">
+<meta property="og:title" content="Gallery | Tech Literacy Network">
+<meta property="og:description" content="Watch our free Cyber Safety 101 workshop recordings. Four sessions on phishing, passwords, privacy settings, and AI scams.">
+<meta property="og:url" content="https://techliteracynetwork.com/gallery">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://techliteracynetwork.com/logo.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -17,6 +23,77 @@
   gtag('js', new Date());
   gtag('config', 'G-77QTJ9Q20S');
 </script>
+
+<style>
+/* ============================================================
+   GALLERY PAGE - workshop recordings
+   Brand: navy #0D2B45 / teal #00C2A8 / cool white #F7F9FC / aqua #E0FAF7
+   ============================================================ */
+
+.gal-hero-logo { width: 64px; height: 64px; border-radius: 12px; display: block; margin-bottom: 26px; }
+
+.vid-section { background: var(--cool-white); border-top: 1px solid var(--border); }
+.vid-head { max-width: 620px; margin-bottom: 48px; }
+.vid-head-tag { display: inline-block; background: var(--aqua); border: 1px solid rgba(0,194,168,0.3); color: var(--teal-dim); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 14px; border-radius: 100px; margin-bottom: 18px; }
+.vid-head h2 { font-size: clamp(26px, 3.2vw, 40px); font-weight: 700; color: var(--navy); letter-spacing: -0.02em; margin-bottom: 14px; }
+.vid-head p { font-size: 16.5px; color: var(--text-secondary); line-height: 1.7; }
+
+.vid-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+
+.vid-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s; }
+.vid-card:hover { border-color: rgba(0,194,168,0.45); box-shadow: 0 14px 36px rgba(13,43,69,0.09); transform: translateY(-3px); }
+
+/* video area */
+.vid-frame { position: relative; aspect-ratio: 16/9; background-color: var(--navy); background-size: cover; background-position: center; cursor: pointer; border-bottom: 1px solid var(--border); overflow: hidden; }
+.vid-frame::after { content: ''; position: absolute; inset: 0; z-index: 2; background: linear-gradient(160deg, rgba(13,43,69,0.55), rgba(13,43,69,0.25)); transition: background 0.2s; }
+.vid-frame:hover::after { background: linear-gradient(160deg, rgba(13,43,69,0.38), rgba(13,43,69,0.12)); }
+.vid-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; z-index: 5; }
+.vid-frame.is-playing::after,
+.vid-frame.is-playing .vid-play,
+.vid-frame.is-playing .vid-num,
+.vid-frame.is-playing .vid-grid-bg,
+.vid-frame.is-playing .vid-soon { display: none; }
+
+.vid-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 3; width: 62px; height: 62px; border-radius: 50%; background: var(--teal); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; box-shadow: 0 6px 22px rgba(0,194,168,0.4); transition: background 0.2s, transform 0.2s; }
+.vid-frame:hover .vid-play { background: #00d9bc; transform: translate(-50%,-50%) scale(1.08); }
+.vid-play svg { margin-left: 3px; }
+
+.vid-num { position: absolute; top: 14px; left: 14px; z-index: 3; font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); background: rgba(13,43,69,0.72); border: 1px solid rgba(0,194,168,0.3); padding: 5px 12px; border-radius: 100px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+
+/* state before a video ID is pasted in */
+.vid-grid-bg { position: absolute; inset: 0; z-index: 1; background-image: linear-gradient(rgba(0,194,168,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(0,194,168,0.07) 1px, transparent 1px); background-size: 34px 34px; pointer-events: none; opacity: 0; }
+.vid-frame.is-pending { cursor: default; }
+.vid-frame.is-pending .vid-play { display: none; }
+.vid-frame.is-pending .vid-grid-bg { opacity: 1; }
+.vid-soon { display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 3; text-align: center; color: rgba(255,255,255,0.45); font-size: 13px; font-weight: 500; white-space: nowrap; }
+.vid-frame.is-pending .vid-soon { display: block; }
+
+/* card body */
+.vid-body { padding: 24px 24px 26px; display: flex; flex-direction: column; flex: 1; }
+.vid-title { font-family: 'Space Grotesk', sans-serif; font-size: 19px; font-weight: 700; color: var(--navy); letter-spacing: -0.01em; margin-bottom: 10px; }
+.vid-desc { font-size: 14.5px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 18px; flex: 1; }
+.vid-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 16px; }
+.vid-tag { font-size: 11.5px; font-weight: 600; color: var(--teal-dim); background: var(--aqua); border-radius: 6px; padding: 4px 10px; }
+.vid-meta { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--text-light); border-top: 1px solid var(--border); padding-top: 14px; }
+.vid-meta svg { flex-shrink: 0; }
+.vid-meta span { color: rgba(13,43,69,0.22); }
+
+/* closing band */
+.gal-cta { background: var(--navy); position: relative; overflow: hidden; text-align: center; }
+.gal-cta-inner { position: relative; z-index: 1; max-width: 620px; margin: 0 auto; }
+.gal-cta h2 { font-size: clamp(24px, 3vw, 38px); font-weight: 700; color: var(--white); letter-spacing: -0.02em; margin-bottom: 16px; }
+.gal-cta p { font-size: 16.5px; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 32px; }
+
+@media (max-width: 860px) {
+  .vid-grid { grid-template-columns: 1fr; gap: 22px; }
+  .vid-head { margin-bottom: 34px; }
+}
+@media (max-width: 480px) {
+  .vid-play { width: 52px; height: 52px; }
+  .vid-body { padding: 20px 20px 22px; }
+  .gal-hero-logo { width: 54px; height: 54px; }
+}
+</style>
 </head>
 <body>
 <nav id="main-nav">
@@ -37,35 +114,187 @@
   </button>
 </nav>
 
-<section style="min-height:80vh;display:flex;align-items:center;justify-content:center;background:var(--navy);position:relative;overflow:hidden">
+<!-- ===================== HERO ===================== -->
+<div class="prog-page-hero">
   <div class="hero-grid-bg"></div>
   <div class="hero-glow"></div>
-  <div style="position:relative;z-index:1;text-align:center;padding:0 5%">
+  <div class="prog-page-inner" style="position:relative;z-index:1">
+    <img src="/logo.png" alt="Tech Literacy Network logo" class="gal-hero-logo">
+    <div class="page-hero-tag">Gallery</div>
+    <h1 class="page-hero-title">Workshops in action.</h1>
+    <p class="page-hero-sub">Every Cyber Safety 101 session we run gets recorded and posted here, so anyone who missed the live workshop can still watch it for free.</p>
+  </div>
+</div>
 
-    <!-- Logo watermark -->
-    <div style="margin-bottom:32px;display:flex;justify-content:center">
-      <svg width="80" height="80" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.9">
-        <path d="M 22,40 Q 22,28 34,28 L 96,40 L 96,166 L 22,166 Z" stroke="#00C2A8" stroke-width="7" fill="none" stroke-linejoin="round"/>
-        <path d="M 104,40 L 166,28 Q 178,28 178,40 L 178,166 L 104,166 Z" stroke="#00C2A8" stroke-width="7" fill="none" stroke-linejoin="round"/>
-        <polyline points="96,166 100,175 104,166" stroke="#00C2A8" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        <circle cx="132" cy="50" r="7" stroke="#00C2A8" stroke-width="7" fill="none"/>
-        <line x1="132" y1="57" x2="132" y2="84" stroke="#00C2A8" stroke-width="7" stroke-linecap="round"/>
-        <circle cx="132" cy="96" r="12" stroke="#00C2A8" stroke-width="7" fill="#00C2A8"/>
-        <line x1="144" y1="96" x2="163" y2="96" stroke="#00C2A8" stroke-width="7" stroke-linecap="round"/>
-        <circle cx="170" cy="96" r="7" stroke="#00C2A8" stroke-width="7" fill="none"/>
-      </svg>
+<!-- ===================== WORKSHOP RECORDINGS ===================== -->
+<section class="vid-section">
+  <div class="section-inner">
+
+    <div class="vid-head">
+      <div class="vid-head-tag">Recordings</div>
+      <h2>Cyber Safety 101, session by session</h2>
+      <p>Four recorded workshops covering everything we teach in person. Watch them in any order, share them with family, or use them with your own group.</p>
     </div>
 
-    <div style="display:inline-block;background:rgba(0,194,168,0.12);border:1px solid rgba(0,194,168,0.25);color:#00C2A8;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 16px;border-radius:100px;margin-bottom:24px">Gallery</div>
+    <div class="vid-grid">
 
-    <h1 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(36px,5vw,64px);font-weight:700;color:#ffffff;letter-spacing:-0.03em;margin-bottom:16px">Coming soon.</h1>
+      <!-- ---------- SESSION 1 ---------- -->
+      <article class="vid-card">
+        <div class="vid-frame" data-yt="VIDEO_ID_1" data-title="Session 1: Spotting Phishing and Scam Messages">
+          <div class="vid-grid-bg"></div>
+          <div class="vid-num">Session 01</div>
+          <button class="vid-play" aria-label="Play Session 1: Spotting Phishing and Scam Messages">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#0D2B45"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <div class="vid-soon">Recording coming soon</div>
+        </div>
+        <div class="vid-body">
+          <h3 class="vid-title">Spotting Phishing and Scam Messages</h3>
+          <p class="vid-desc">How to read a suspicious email or text before you click anything. We go through real phishing attempts line by line, point out the small details that give them away, and cover what to do when you are still not sure.</p>
+          <div class="vid-tags">
+            <span class="vid-tag">Phishing</span>
+            <span class="vid-tag">Fake links</span>
+            <span class="vid-tag">Sender checks</span>
+          </div>
+          <div class="vid-meta">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            60 min <span>&middot;</span> Seniors and adults <span>&middot;</span> Free
+          </div>
+        </div>
+      </article>
 
-    <p style="font-size:17px;color:rgba(255,255,255,0.5);line-height:1.7;max-width:440px;margin:0 auto 40px">We are just getting started. Workshop photos and event highlights will live here as we grow.</p>
+      <!-- ---------- SESSION 2 ---------- -->
+      <article class="vid-card">
+        <div class="vid-frame" data-yt="VIDEO_ID_2" data-title="Session 2: Passwords and Account Security">
+          <div class="vid-grid-bg"></div>
+          <div class="vid-num">Session 02</div>
+          <button class="vid-play" aria-label="Play Session 2: Passwords and Account Security">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#0D2B45"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <div class="vid-soon">Recording coming soon</div>
+        </div>
+        <div class="vid-body">
+          <h3 class="vid-title">Passwords and Account Security</h3>
+          <p class="vid-desc">Building passwords you can actually remember, why reusing one password across accounts puts all of them at risk, and a step by step setup of two-factor authentication on a phone.</p>
+          <div class="vid-tags">
+            <span class="vid-tag">Passwords</span>
+            <span class="vid-tag">Two-factor</span>
+            <span class="vid-tag">Password managers</span>
+          </div>
+          <div class="vid-meta">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            60 min <span>&middot;</span> Seniors and adults <span>&middot;</span> Free
+          </div>
+        </div>
+      </article>
 
+      <!-- ---------- SESSION 3 ---------- -->
+      <article class="vid-card">
+        <div class="vid-frame" data-yt="VIDEO_ID_3" data-title="Session 3: Privacy Settings and Safer Devices">
+          <div class="vid-grid-bg"></div>
+          <div class="vid-num">Session 03</div>
+          <button class="vid-play" aria-label="Play Session 3: Privacy Settings and Safer Devices">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#0D2B45"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <div class="vid-soon">Recording coming soon</div>
+        </div>
+        <div class="vid-body">
+          <h3 class="vid-title">Privacy Settings and Safer Devices</h3>
+          <p class="vid-desc">A live walkthrough of the settings that matter most on a phone, laptop, and browser. We cover app permissions, location sharing, automatic updates, and what to turn off first.</p>
+          <div class="vid-tags">
+            <span class="vid-tag">App permissions</span>
+            <span class="vid-tag">Location</span>
+            <span class="vid-tag">Updates</span>
+          </div>
+          <div class="vid-meta">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            60 min <span>&middot;</span> All ages <span>&middot;</span> Free
+          </div>
+        </div>
+      </article>
+
+      <!-- ---------- SESSION 4 ---------- -->
+      <article class="vid-card">
+        <div class="vid-frame" data-yt="VIDEO_ID_4" data-title="Session 4: AI Scams and Voice Cloning">
+          <div class="vid-grid-bg"></div>
+          <div class="vid-num">Session 04</div>
+          <button class="vid-play" aria-label="Play Session 4: AI Scams and Voice Cloning">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#0D2B45"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <div class="vid-soon">Recording coming soon</div>
+        </div>
+        <div class="vid-body">
+          <h3 class="vid-title">AI Scams and Voice Cloning</h3>
+          <p class="vid-desc">Scammers can copy a familiar voice from a few seconds of audio pulled off social media. We show how these calls work, play a real example, and set up a family codeword system that stops them cold.</p>
+          <div class="vid-tags">
+            <span class="vid-tag">Voice cloning</span>
+            <span class="vid-tag">Deepfakes</span>
+            <span class="vid-tag">Family codeword</span>
+          </div>
+          <div class="vid-meta">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            60 min <span>&middot;</span> Families <span>&middot;</span> Free
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!--
+  ===================== PHOTO GRID =====================
+  Uncomment this whole block once you have real workshop photos.
+  Replace each .gallery-placeholder div with:
+  <img src="/photos/your-photo.jpg" alt="Description" style="width:100%;height:100%;object-fit:cover">
+
+<section>
+  <div class="section-inner">
+    <div class="vid-head">
+      <div class="vid-head-tag" style="background:transparent;border-color:var(--border-strong);color:var(--text-secondary)">Photos</div>
+      <h2>From our sessions</h2>
+      <p>Moments from workshops we have run with libraries, community centres, and schools across Ontario.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <div class="hero-grid-bg"></div>
+        <div class="gallery-placeholder">
+          <div class="gallery-placeholder-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(0,194,168,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+          <span>Add photo</span>
+        </div>
+        <div class="gallery-caption">Cyber Safety 101</div>
+      </div>
+      <div class="gallery-item">
+        <div class="hero-grid-bg"></div>
+        <div class="gallery-placeholder">
+          <div class="gallery-placeholder-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(0,194,168,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+          <span>Add photo</span>
+        </div>
+        <div class="gallery-caption">Workshop setup</div>
+      </div>
+      <div class="gallery-item">
+        <div class="hero-grid-bg"></div>
+        <div class="gallery-placeholder">
+          <div class="gallery-placeholder-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(0,194,168,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+          <span>Add photo</span>
+        </div>
+        <div class="gallery-caption">AI Basics for Everyday Life</div>
+      </div>
+    </div>
+  </div>
+</section>
+-->
+
+<!-- ===================== CTA ===================== -->
+<section class="gal-cta">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="gal-cta-inner">
+    <h2>Want a live session for your group?</h2>
+    <p>We run these workshops in person and over Zoom for libraries, community centres, schools, and seniors organizations across Ontario. Always free.</p>
     <a href="/contact" class="btn-primary">Request a workshop
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
     </a>
-
   </div>
 </section>
 
@@ -112,7 +341,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 Tech Literacy Network. All rights reserved. Ontario, Canada.</p>
+      <p>&copy; 2026 Tech Literacy Network. All rights reserved. Ontario, Canada.</p>
       <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
         <div class="footer-badge">Currently accepting workshop requests</div>
         <a href="/privacy" style="font-size:12px;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='#00C2A8'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">Privacy Policy</a>
@@ -120,186 +349,49 @@
     </div>
   </div>
 </footer>
+
 <script>
-  document.getElementById('nav-toggle').addEventListener('click', function() {
+  document.getElementById('nav-toggle').addEventListener('click', function () {
     document.getElementById('nav-links').classList.toggle('open');
+  });
+
+  /* ---- YouTube click to load ----
+     Nothing loads from YouTube until someone actually clicks play.
+     Keeps the page fast and avoids third party cookies on page load. */
+  document.querySelectorAll('.vid-frame').forEach(function (frame) {
+    var id = (frame.getAttribute('data-yt') || '').trim();
+
+    // no real ID pasted in yet, show the placeholder state
+    if (!id || id.indexOf('VIDEO_ID') === 0) {
+      frame.classList.add('is-pending');
+      return;
+    }
+
+    // try the HD thumbnail, fall back to the standard one
+    var probe = new Image();
+    probe.onload = function () {
+      var src = probe.naturalWidth > 200 ? 'maxresdefault' : 'hqdefault';
+      frame.style.backgroundImage = 'url(https://i.ytimg.com/vi/' + id + '/' + src + '.jpg)';
+    };
+    probe.onerror = function () {
+      frame.style.backgroundImage = 'url(https://i.ytimg.com/vi/' + id + '/hqdefault.jpg)';
+    };
+    probe.src = 'https://i.ytimg.com/vi/' + id + '/maxresdefault.jpg';
+
+    frame.addEventListener('click', function () {
+      if (frame.classList.contains('is-playing')) return;
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1';
+      iframe.title = frame.getAttribute('data-title') || 'Tech Literacy Network workshop';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+      frame.appendChild(iframe);
+      frame.classList.add('is-playing');
+      if (typeof gtag === 'function') {
+        gtag('event', 'video_play', { video_title: frame.getAttribute('data-title') || id });
+      }
+    });
   });
 </script>
 </body>
 </html>
-
-<!-- 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gallery — Tech Literacy Network</title>
-<link rel="stylesheet" href="/style.css">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-77QTJ9Q20S"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-77QTJ9Q20S');
-</script>
-
-</head>
-<body>
-<nav id="main-nav">
-  <a class="nav-brand" href="/">
-    <img src="/logo.png" width="36" height="36" alt="Tech Literacy Network logo" style="display:block;border-radius:6px">
-    <div class="nav-brand-text">Tech Literacy Network<span>Brampton, Ontario</span></div>
-  </a>
-  <ul class="nav-links" id="nav-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="/programs">Programs</a></li>
-    <li><a href="/about">About</a></li>
-    <li><a href="/blog">Blog</a></li>
-    <li><a href="/gallery" class="active">Gallery</a></li>
-    <li><a href="/contact" class="nav-cta">Request a Workshop</a></li>
-  </ul>
-  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-  <div class="prog-page-hero">
-    <div class="hero-grid-bg"></div>
-    <div class="prog-page-inner">
-      <div class="page-hero-tag">Gallery</div>
-      <h1 class="page-hero-title">Workshops in action.</h1>
-      <p class="page-hero-sub">Photos from our sessions — add your own as you run more workshops.</p>
-    </div>
-  </div>
-  <section>
-    <div class="section-inner">
-      <div class="gallery-grid">
-        <div class="gallery-item" style="grid-column:span 2;grid-row:span 2;aspect-ratio:auto">
-          <div class="hero-grid-bg"></div>
-          <div class="gallery-placeholder">
-            <div class="gallery-placeholder-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(0,194,168,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-            <span>Add photo</span>
-          </div>
-          <div class="gallery-caption">Workshop · AI Basics for Everyday Life</div>
-        </div>
-        <div class="gallery-item">
-          <div class="hero-grid-bg"></div>
-          <div class="gallery-placeholder">
-            <div class="gallery-placeholder-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(0,194,168,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-            <span>Add photo</span>
-          </div>
-          <div class="gallery-caption">Workshop setup</div>
-        </div>
-        <div class="gallery-item">
-          <div class="hero-grid-bg"></div>
-          <div class="gallery-placeholder">
-            <div class="gallery-placeholder-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(0,194,168,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-            <span>Add photo</span>
-          </div>
-          <div class="gallery-caption">Handouts</div>
-        </div>
-        <div class="gallery-item">
-          <div class="hero-grid-bg"></div>
-          <div class="gallery-placeholder">
-            <div class="gallery-placeholder-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(0,194,168,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-            <span>Add photo</span>
-          </div>
-          <div class="gallery-caption">Slide deck</div>
-        </div>
-        <div class="gallery-item">
-          <div class="hero-grid-bg"></div>
-          <div class="gallery-placeholder">
-            <div class="gallery-placeholder-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(0,194,168,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-            <span>Add photo</span>
-          </div>
-          <div class="gallery-caption">Cyber Safety 101</div>
-        </div>
-        <div class="gallery-item">
-          <div class="hero-grid-bg"></div>
-          <div class="gallery-placeholder">
-            <div class="gallery-placeholder-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(0,194,168,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-            <span>Add photo</span>
-          </div>
-          <div class="gallery-caption">Community event</div>
-        </div>
-        <div class="gallery-item">
-          <div class="hero-grid-bg"></div>
-          <div class="gallery-placeholder">
-            <div class="gallery-placeholder-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(0,194,168,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-            <span>Add photo</span>
-          </div>
-          <div class="gallery-caption">Online Kindness Challenge</div>
-        </div>
-        <div class="gallery-item">
-          <div class="hero-grid-bg"></div>
-          <div class="gallery-placeholder">
-            <div class="gallery-placeholder-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(0,194,168,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-            <span>Add photo</span>
-          </div>
-          <div class="gallery-caption">Virtual session</div>
-        </div>
-      </div>
-      <p style="text-align:center;font-size:13px;color:var(--text-light);margin-top:32px">Replace placeholder boxes with real workshop photos as you run sessions.</p>
-    </div>
-  </section>
-
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <a class="nav-brand" href="/" style="margin-bottom:0">
-          <img src="/logo.png" width="36" height="36" alt="Tech Literacy Network logo" style="display:block;border-radius:6px">
-          <div class="nav-brand-text" style="color:white">Tech Literacy Network<span>Brampton, Ontario</span></div>
-        </a>
-        <p>Free AI and cyber safety workshops for seniors and youth. Empowering digital citizens, one session at a time.</p>
-        <div class="footer-social">
-          <a class="social-btn" href="https://instagram.com/techliteracynetwork" target="_blank" aria-label="Instagram">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-          </a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>Pages</h4>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/programs">Programs</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/gallery">Gallery</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Programs</h4>
-        <ul>
-          <li><a href="/programs">AI Basics for Everyday Life</a></li>
-          <li><a href="/programs">Cyber Safety 101</a></li>
-          <li><a href="/programs">Online Kindness Challenge</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="mailto:techliteracynetwork@gmail.com">techliteracynetwork@gmail.com</a></li>
-          <li><a href="tel:6478523544">(647) 852-3544</a></li>
-          <li><a href="/contact">Request a workshop</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2025 Tech Literacy Network. All rights reserved. Brampton, Ontario, Canada.</p>
-      <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
-        <div class="footer-badge">Currently accepting workshop requests</div>
-        <a href="/privacy" style="font-size:12px;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='#00C2A8'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">Privacy Policy</a>
-      </div>
-    </div>
-  </div>
-</footer>
-<script>
-  document.getElementById('nav-toggle').addEventListener('click', function() {
-    document.getElementById('nav-links').classList.toggle('open');
-  });
-</script>
-</body>
-</html>
--->
