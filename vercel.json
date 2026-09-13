@@ -1,11 +1,13 @@
 {
   "rewrites": [
-    { "source": "/programs", "destination": "/programs.html" },
-    { "source": "/about",    "destination": "/about.html"    },
-    { "source": "/blog",     "destination": "/blog.html"     },
-    { "source": "/gallery",  "destination": "/gallery.html"  },
-    { "source": "/contact",  "destination": "/contact.html"  },
-    { "source": "/privacy",  "destination": "/privacy.html"  },
-    { "source": "/getinvolved",  "destination": "/getinvolved.html"  }
+    { "source": "/programs",    "destination": "/programs.html"    },
+    { "source": "/about",       "destination": "/about.html"       },
+    { "source": "/team",        "destination": "/team.html"        },
+    { "source": "/getinvolved", "destination": "/getinvolved.html" },
+    { "source": "/resources",   "destination": "/resources.html"   },
+    { "source": "/blog",        "destination": "/blog.html"        },
+    { "source": "/gallery",     "destination": "/gallery.html"     },
+    { "source": "/contact",     "destination": "/contact.html"     },
+    { "source": "/privacy",     "destination": "/privacy.html"     }
   ]
 }
